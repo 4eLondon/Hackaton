@@ -1,5 +1,0 @@
-# Website
-
-Basic website
-
-## Features
