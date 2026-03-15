@@ -47,7 +47,7 @@
           </div>
           <div class="login-quick">
             <label class="checkbox-wrap"><input type="checkbox" name="remember" /> Remember me</label>
-            <a href="#" class="link-small">Forgot password?</a>
+            <a href="#" class="link-small" id="open-forgot">Forgot password?</a>
           </div>
           <button type="submit" class="btn btn-primary btn-full">Log In</button>
           <p class="form-note">New to PlantLink? <a href="contact.html">Request access</a> or <a href="#" id="open-register">Create account</a></p>
@@ -137,6 +137,29 @@
     </div>
   </div>
 
+  <div id="forgot-modal" class="modal-overlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="forgot-title">
+      <button class="modal-close" id="forgot-close" aria-label="Close">✕</button>
+      <div class="modal-header">
+        <span class="modal-icon">🔐</span>
+        <div>
+          <p class="section-tag">Reset password</p>
+          <h3 id="forgot-title">Recover your PlantLink account</h3>
+        </div>
+      </div>
+      <p style="color:#475569; margin-bottom:16px;">Enter your email below and we will send a secure reset link to your inbox.</p>
+      <form id="forgot-form" class="login-form" novalidate>
+        <div class="form-group">
+          <label for="forgot-email">Email</label>
+          <input id="forgot-email" name="forgotEmail" type="email" placeholder="you@farmlink.com" required />
+          <span class="field-error" id="forgot-error" style="display:none;"></span>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Send reset instructions</button>
+      </form>
+      <div id="forgot-message" class="form-success" style="display:none;"></div>
+    </div>
+  </div>
+
   <footer class="footer" style="padding: 24px 0 18px;">
     <div class="container" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
       <div style="display:flex;align-items:center;gap:8px;font-weight:600;color:#fff;">
@@ -155,34 +178,46 @@
     const registerForm = document.getElementById('register-form');
     const backToLogin = document.getElementById('back-to-login');
     const registerMsg = document.getElementById('register-message');
+    const openForgot = document.getElementById('open-forgot');
+    const forgotModal = document.getElementById('forgot-modal');
+    const forgotClose = document.getElementById('forgot-close');
+    const forgotForm = document.getElementById('forgot-form');
+    const forgotMsg = document.getElementById('forgot-message');
+    const forgotError = document.getElementById('forgot-error');
 
-    function showModal() {
-      registerModal.classList.add('active');
-      registerModal.setAttribute('aria-hidden', 'false');
+    function showModal(modal) {
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
     }
-    function hideModal() {
-      registerModal.classList.remove('active');
-      registerModal.setAttribute('aria-hidden', 'true');
+    function hideModal(modal) {
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
     }
 
     openRegister.addEventListener('click', (e) => {
       e.preventDefault();
-      showModal();
+      showModal(registerModal);
     });
-    registerClose.addEventListener('click', hideModal);
+    registerClose.addEventListener('click', () => hideModal(registerModal));
     backToLogin.addEventListener('click', (e) => {
       e.preventDefault();
-      hideModal();
+      hideModal(registerModal);
       form.email.focus();
     });
     registerModal.addEventListener('click', (e) => {
-      if (e.target === registerModal) hideModal();
+      if (e.target === registerModal) hideModal(registerModal);
     });
 
-    <hr/>
-    
+    openForgot.addEventListener('click', (e) => {
+      e.preventDefault();
+      showModal(forgotModal);
+    });
+    forgotClose.addEventListener('click', () => hideModal(forgotModal));
+    forgotModal.addEventListener('click', (e) => {
+      if (e.target === forgotModal) hideModal(forgotModal);
+    });
 
     form.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -202,6 +237,27 @@
       setTimeout(() => {
         window.location.href = 'index.html';
       }, 650);
+    });
+
+    forgotForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      forgotMsg.style.display = 'none';
+      forgotError.style.display = 'none';
+      forgotError.textContent = '';
+      const email = forgotForm.forgotEmail.value.trim();
+      if (!/\S+@\S+\.\S+/.test(email)) {
+        forgotError.style.display = 'block';
+        forgotError.textContent = 'Please enter a valid email address.';
+        return;
+      }
+      forgotMsg.style.display = 'block';
+      forgotMsg.style.background = '#e6ffef';
+      forgotMsg.style.color = '#065f46';
+      forgotMsg.textContent = 'A password reset link has been sent if this email is registered.';
+      setTimeout(() => {
+        hideModal(forgotModal);
+        forgotForm.reset();
+      }, 1500);
     });
 
     registerForm.addEventListener('submit', (e) => {
@@ -265,7 +321,7 @@
       registerMsg.textContent = 'Account created successfully. You can now log in.';
 
       setTimeout(() => {
-        hideModal();
+        hideModal(registerModal);
         registerForm.reset();
         msg.style.display = 'block';
         msg.style.background = '#e6ffef';
