@@ -557,6 +557,10 @@ function getAIResponse(userMsg) {
   return AI_RESPONSES.default;
 }
 
+function getFallbackAIResponse(prompt) {
+  return getAIResponse(prompt);
+}
+
 async function fetchAIResponse(prompt) {
   if (!OPENAI_API_KEY || OPENAI_API_KEY === 'REPLACE_WITH_OPENAI_API_KEY') {
     return getFallbackAIResponse(prompt);
@@ -594,17 +598,16 @@ async function fetchAIResponse(prompt) {
 }
 
 /** Handle sending a chat message */
-function sendChatMessage(text) {
+async function sendChatMessage(text) {
   text = text.trim();
   if (!text) return;
   appendMessage(text, 'user');
   chatInput.value = '';
   showTyping();
-  // Simulate AI thinking delay
-  setTimeout(() => {
-    removeTyping();
-    appendMessage(getAIResponse(text), 'ai');
-  }, 1200 + Math.random() * 600);
+
+  const responseText = await fetchAIResponse(text);
+  removeTyping();
+  appendMessage(responseText, 'ai');
 }
 
 chatSend.addEventListener('click', () => sendChatMessage(chatInput.value));
