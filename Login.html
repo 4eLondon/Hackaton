@@ -14,13 +14,14 @@
     <div class="nav-container">
       <a href="index.html" class="nav-logo"><span class="logo-icon">🌿</span><span>PlantLink</span></a>
       <ul class="nav-links" id="nav-links">
-        <li><a href="index.html" class="nav-item">Home</a></li>
+        <li><a href="index.html" class="nav-item active">Home</a></li>
         <li><a href="marketplace.html" class="nav-item">Marketplace</a></li>
         <li><a href="ai-assistant.html" class="nav-item">AI Assistant</a></li>
         <li><a href="weather.html" class="nav-item">Weather</a></li>
         <li><a href="news.html" class="nav-item">Farming News</a></li>
         <li><a href="contact.html" class="nav-item">Contact</a></li>
-        <li><a href="Login.html" class="nav-item active">Login</a></li>
+        <li><a href="register.html" class="nav-item">Register</a></li>
+        <li><a href="Login.html" class="nav-item">Login</a></li>
       </ul>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
     </div>
@@ -145,6 +146,137 @@
     </div>
   </footer>
 
+<<<<<<< HEAD
   <script type="module" src="Backend/dataconnet.js"></script>
+=======
+  <script>
+    const form = document.getElementById('login-form');
+    const msg = document.getElementById('login-message');
+    const openRegister = document.getElementById('open-register');
+    const registerModal = document.getElementById('register-modal');
+    const registerClose = document.getElementById('register-close');
+    const registerForm = document.getElementById('register-form');
+    const backToLogin = document.getElementById('back-to-login');
+    const registerMsg = document.getElementById('register-message');
+
+    function showModal() {
+      registerModal.classList.add('active');
+      registerModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    function hideModal() {
+      registerModal.classList.remove('active');
+      registerModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    openRegister.addEventListener('click', (e) => {
+      e.preventDefault();
+      showModal();
+    });
+    registerClose.addEventListener('click', hideModal);
+    backToLogin.addEventListener('click', (e) => {
+      e.preventDefault();
+      hideModal();
+      form.email.focus();
+    });
+    registerModal.addEventListener('click', (e) => {
+      if (e.target === registerModal) hideModal();
+    });
+
+    <hr/>
+    
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = form.email.value.trim();
+      const pwd = form.password.value.trim();
+      if (!email || !pwd || pwd.length < 8) {
+        msg.style.display = 'block';
+        msg.textContent = 'Please enter a valid email and password (min 8 characters).';
+        msg.style.background = '#fee2e2';
+        msg.style.color = '#b91c1c';
+        return;
+      }
+      msg.style.display = 'block';
+      msg.style.background = '#e6ffef';
+      msg.style.color = '#065f46';
+      msg.textContent = 'Login successful. Redirecting...';
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 650);
+    });
+
+    registerForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fullName = registerForm.fullName.value.trim();
+      const email = registerForm.registerEmail.value.trim();
+      const phone = registerForm.phone.value.trim();
+      const farmType = registerForm.farmType.value;
+      const pwd = registerForm.registerPassword.value;
+      const confirm = registerForm.confirmPassword.value;
+
+      const errors = {
+        name: document.getElementById('name-error'),
+        email: document.getElementById('email-error'),
+        phone: document.getElementById('phone-error'),
+        farm: document.getElementById('farm-error'),
+        password: document.getElementById('password-error'),
+        confirm: document.getElementById('confirm-error')
+      };
+
+      Object.values(errors).forEach((el) => { el.style.display = 'none'; el.textContent = ''; });
+      registerMsg.style.display = 'none';
+
+      let valid = true;
+      if (fullName.length < 2) {
+        valid = false;
+        errors.name.textContent = 'Please enter your full name.';
+        errors.name.style.display = 'block';
+      }
+      if (!/^\S+@\S+\.\S+$/.test(email)) {
+        valid = false;
+        errors.email.textContent = 'Enter a valid email address.';
+        errors.email.style.display = 'block';
+      }
+      if (!/^\+?[0-9\-\s]{7,20}$/.test(phone)) {
+        valid = false;
+        errors.phone.textContent = 'Enter a valid phone number.';
+        errors.phone.style.display = 'block';
+      }
+      if (!farmType) {
+        valid = false;
+        errors.farm.textContent = 'Please choose your farm type.';
+        errors.farm.style.display = 'block';
+      }
+      if (pwd.length < 8) {
+        valid = false;
+        errors.password.textContent = 'Password must be at least 8 characters.';
+        errors.password.style.display = 'block';
+      }
+      if (pwd !== confirm) {
+        valid = false;
+        errors.confirm.textContent = 'Passwords do not match.';
+        errors.confirm.style.display = 'block';
+      }
+
+      if (!valid) return;
+
+      registerMsg.style.display = 'block';
+      registerMsg.style.background = '#e6ffef';
+      registerMsg.style.color = '#065f46';
+      registerMsg.textContent = 'Account created successfully. You can now log in.';
+
+      setTimeout(() => {
+        hideModal();
+        registerForm.reset();
+        msg.style.display = 'block';
+        msg.style.background = '#e6ffef';
+        msg.style.color = '#065f46';
+        msg.textContent = 'Account ready. Log in now.';
+      }, 850);
+    });
+  </script>
+>>>>>>> f0e56464f4262a5aa4f4359cbde8175702b5ca15
 </body>
 </html>

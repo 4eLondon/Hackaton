@@ -1,29 +1,22 @@
-/**
- * PlantLink – Main JavaScript
- * Handles: Navigation, Marketplace, AI Chat, Weather, News, Contact
- */
 
-/* =============================================================
-   DATA STORES
-   ============================================================= */
+console.log('Script loaded');
 
-/** Products for the marketplace */
 const PRODUCTS = [
-  { id:1, name:'Vine Tomatoes',   category:'vegetable', price:'$3.50/kg',  seller:'Green Hills Farm',   img:'https://images.unsplash.com/photo-1592924357229-d23a5e11a8a7?w=400&q=80' },
-  { id:2, name:'Sweet Pepper',    category:'vegetable', price:'$4.20/kg',  seller:'Sunrise Agro',       img:'https://images.unsplash.com/photo-1601004890657-fe80ebc7b9c7?w=400&q=80' },
-  { id:3, name:'Irish Potato',    category:'vegetable', price:'$2.80/kg',  seller:'Blue Mountain Farms',img:'https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=400&q=80' },
-  { id:4, name:'Callaloo',        category:'vegetable', price:'$1.90/bunch',seller:'Hanover Fresh Co.',  img:'https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=400&q=80' },
-  { id:5, name:'Carrots',         category:'vegetable', price:'$2.10/kg',  seller:'St. Elizabeth Growers',img:'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=400&q=80' },
-  { id:6, name:'Scotch Bonnet',   category:'vegetable', price:'$6.00/kg',  seller:'Clarendon Spice Farm',img:'https://images.unsplash.com/photo-1563635815-47ce8deb5847?w=400&q=80' },
-  { id:7, name:'Watermelon',      category:'fruit',     price:'$1.50/kg',  seller:'Westmoreland Farms', img:'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=400&q=80' },
-  { id:8, name:'Bananas',         category:'fruit',     price:'$1.20/lb',  seller:'Trelawny Banana Co.',img:'https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400&q=80' },
-  { id:9, name:'Breadfruit',      category:'fruit',     price:'$2.40/each',seller:'Portland Produce',   img:'https://images.unsplash.com/photo-1628115706401-a5e03c9ab30d?w=400&q=80' },
-  { id:10,name:'Corn',            category:'grain',     price:'$0.80/ear', seller:'Manchester Grains',  img:'https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=400&q=80' },
-  { id:11,name:'Sugar Cane',      category:'grain',     price:'$0.60/stalk',seller:'Westmoreland Sugar', img:'https://images.unsplash.com/photo-1621263764928-df1444c5e859?w=400&q=80' },
-  { id:12,name:'Pumpkin',         category:'vegetable', price:'$1.80/kg',  seller:'Mandeville Fresh',   img:'https://images.unsplash.com/photo-1570586437263-ab629fccc818?w=400&q=80' },
+  { id:1, name:'Tomatoes',   category:'vegetable', price:'JMD 350/lb',  seller:'Green Hills Farm',   img:'https://www.almanac.com/sites/default/files/styles/or/public/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpg?itok=AFHF0CtR'},
+  { id:2, name:'Sweet Pepper',    category:'vegetable', price:'JMD 400/lb',  seller:'St.Ann Farm Go',       img:'https://www.easytogrowbulbs.com/cdn/shop/files/SweetBellPepperPlantinaRaisedBed_Gemini-sqWeb.jpg?v=1739994661&width=823' },
+  { id:3, name:'Irish Potato',    category:'vegetable', price:'JMD 300/lb',  seller:'Blue Mountain Farms',img:'https://res.cloudinary.com/aenetworks/image/upload/c_fill,ar_2,w_1920,h_960,g_auto/dpr_auto/f_auto/q_auto:eco/v1/hith-after-168-years-potato-famine-mystery-solved-2?_a=BAVAZGB00' },
+  { id:4, name:'Callaloo',        category:'vegetable', price:'JMD 350/bunch',seller:'Hanover Fresh Co.',  img:'https://seasonedskilletblog.com/wp-content/uploads/2022/09/Jamaican-Callaloo-1.jpg' },
+  { id:5, name:'Carrots',         category:'vegetable', price:'JMD 450/lb',  seller:'St. Elizabeth Growers',img:'https://tuigarden.co.nz/media/p2qgrthy/tui-how-to-grow-carrots_512x276.png?width=600' },
+  { id:6, name:'Scotch Bonnet pepper',   category:'vegetable', price:'JMD 500/lb',  seller:'Clarendon Spice Farm',img:'https://jamaicainseason.com/wp-content/uploads/2024/03/Image-5632-scaled.jpg' },
+  { id:7, name:'Watermelon',      category:'fruit',     price:'JMD 320/lb',  seller:'Westmoreland Farms', img:'https://whatscookingamerica.net/wp-content/uploads/2015/03/Watermelon-Sliced-Eqyptian5.jpg' },
+  { id:8, name:'Bananas',         category:'fruit',     price:'JMD 380/lb',  seller:'Trelawny Banana Co.',img:'https://www.islandorganicsbali.com/cdn/shop/products/banana_17897f33-44e4-4f06-84ba-c18134816788.jpg?v=1669430721&width=823' },
+  { id:9, name:'Breadfruit',      category:'fruit',     price:'JMD 700/each',seller:'Portland Produce',   img:'https://cdn.shopify.com/s/files/1/0062/8532/8445/products/Breadfruit_3_BB.jpg?v=1666028851' },
+  { id:10,name:'Corn',            category:'grain',     price:'JMD 800/ear', seller:'Manchester Grains',  img:'https://www.southernliving.com/thmb/EAP2MOnddeJ69OoOlrT5-q0g6f8=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/gettyimages-763286485-2000-6607f1726c1c4c38ade506ebafd2f9ab.jpg' },
+  { id:11,name:'Sugar Cane',      category:'grain',     price:'JMD 900/stalk',seller:'Westmoreland Sugar', img:'https://www.saveur.com/uploads/2022/03/05/sugarcane-linda-xiao.jpg?dpr=1.5&format=auto&optimize=high&width=1440' },
+  { id:12,name:'Pumpkin',         category:'vegetable', price:'JMD 480/lb',  seller:'Mandeville Fresh',   img:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Cucurbita_2011_G1_Large.jpg/1280px-Cucurbita_2011_G1_Large.jpg' },
 ];
 
-/** Weather alerts */
+
 const WEATHER_ALERTS = [
   { icon:'⛈️', type:'high',   title:'Heavy Rainfall Warning',   risk:'High Risk',    advice:'Improve field drainage immediately. Delay fertiliser application and protect seedlings from flooding.' },
   { icon:'🌬️', type:'medium', title:'Tropical Storm Watch',      risk:'Medium Risk',  advice:'Secure greenhouses and nets. Harvest mature crops early. Brace root structures of young plants.' },
@@ -33,7 +26,7 @@ const WEATHER_ALERTS = [
   { icon:'🌪️', type:'high',   title:'Strong Wind Alert',         risk:'High Risk',    advice:'Stake tall crops such as plantain and corn. Remove dead branches that could cause wind damage.' },
 ];
 
-/** 5-day forecast */
+
 const FORECAST = [
   { day:'Mon', icon:'⛈️', temp:'27°C' },
   { day:'Tue', icon:'🌤️', temp:'29°C' },
@@ -42,7 +35,7 @@ const FORECAST = [
   { day:'Fri', icon:'⛅', temp:'28°C' },
 ];
 
-/** Agricultural news */
+
 const NEWS = [
   {
     region:'jamaica',
@@ -102,7 +95,7 @@ const NEWS = [
   },
 ];
 
-/** AI farming response database */
+
 const AI_RESPONSES = {
   yellow: "Yellow leaves often signal a nitrogen deficiency. Apply a balanced nitrogen fertiliser (e.g., urea at 46-0-0) and ensure proper soil drainage. If yellowing starts at the base and moves upward, this is a classic nitrogen deficiency pattern. Consider a soil test to confirm.",
   tomato: "For tomatoes, ensure full sun (6–8 hours), well-drained soil with a pH of 6.0–6.8, and consistent watering. Common diseases include early blight and bacterial wilt. Rotate crops yearly and use copper-based fungicides preventatively.",
@@ -117,27 +110,24 @@ const AI_RESPONSES = {
   default: "That's a great question! For the best agricultural advice tailored to your specific crop and location, I'd recommend also consulting with your local parish agricultural extension officer. Generally, healthy crops need balanced nutrition, consistent moisture, good drainage, and disease prevention. What crop or specific challenge are you dealing with?"
 };
 
-/* =============================================================
-   NAVIGATION
-   ============================================================= */
+
 const navbar    = document.getElementById('navbar');
 const hamburger = document.getElementById('hamburger');
 const navLinks  = document.getElementById('nav-links');
 const navItems  = document.querySelectorAll('.nav-item');
 
-// Sticky navbar shadow on scroll
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 20);
   updateActiveNav();
 });
 
-// Hamburger toggle
+
 hamburger.addEventListener('click', () => {
   hamburger.classList.toggle('open');
   navLinks.classList.toggle('open');
 });
 
-// Close nav when link clicked (mobile)
+
 navItems.forEach(item => {
   item.addEventListener('click', () => {
     hamburger.classList.remove('open');
@@ -145,7 +135,7 @@ navItems.forEach(item => {
   });
 });
 
-/** Highlight the active nav item based on scroll position */
+
 function updateActiveNav() {
   const sections = ['home','features','marketplace','ai-assistant','weather','news','about','contact'];
   let current = 'home';
@@ -159,13 +149,11 @@ function updateActiveNav() {
   });
 }
 
-/* =============================================================
-   SCROLL REVEAL
-   ============================================================= */
+
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry, i) => {
     if (entry.isIntersecting) {
-      // Stagger sibling cards
+      
       const siblings = entry.target.parentElement.querySelectorAll('.reveal');
       let delay = 0;
       siblings.forEach((el, idx) => { if (el === entry.target) delay = idx * 80; });
@@ -178,68 +166,232 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-/* =============================================================
-   MARKETPLACE
-   ============================================================= */
-const productsGrid  = document.getElementById('products-grid');
-const productSearch = document.getElementById('product-search');
-const filterTabs    = document.getElementById('filter-tabs');
 
-let currentFilter = 'all';
-let searchQuery   = '';
 
-/** Render products based on current filter + search */
-function renderProducts() {
-  const filtered = PRODUCTS.filter(p => {
-    const matchCat    = currentFilter === 'all' || p.category === currentFilter;
-    const matchSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                        p.seller.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchCat && matchSearch;
+const buyerSearchInput    = document.getElementById('buyer-search-input');
+const buyerCategoryFilter = document.getElementById('buyer-category-filter');
+const listingsGrid        = document.getElementById('listings-grid');
+const resultsLabel        = document.getElementById('results-label');
+const toggleListingsBtn   = document.getElementById('toggle-listings-btn');
+
+const sellerForm     = document.getElementById('seller-form');
+  const sfToast        = document.getElementById('sf-toast');
+  const sfToastMsg     = document.getElementById('sf-toast-msg');
+  const imageUrlInput  = document.getElementById('sf-image-url');
+  const imageFileInput = document.getElementById('sf-image-file');
+  const imagePreview   = document.getElementById('sf-image-preview');
+  const imageError     = document.getElementById('err-image-url');
+  const fileError      = document.getElementById('err-image-file');
+
+let sellerListings = PRODUCTS.map(p => ({
+  id: p.id,
+  name: p.name,
+  seller: p.seller,
+  category: p.category,
+  price: p.price,
+  img: p.img,
+  description: `Fresh from ${p.seller}`,
+  socials: {}
+}));
+let nextListingId = PRODUCTS.length + 1;
+
+const hiddenListings = new Set();
+
+console.log('buyerSearchInput:', !!buyerSearchInput);
+console.log('buyerCategoryFilter:', !!buyerCategoryFilter);
+console.log('listingsGrid:', !!listingsGrid);
+console.log('resultsLabel:', !!resultsLabel);
+console.log('toggleListingsBtn:', !!toggleListingsBtn);
+console.log('sellerForm:', !!sellerForm);
+console.log('sfToast:', !!sfToast);
+console.log('sfToastMsg:', !!sfToastMsg);
+console.log('imageUrlInput:', !!imageUrlInput);
+console.log('imageFileInput:', !!imageFileInput);
+console.log('imagePreview:', !!imagePreview);
+console.log('imageError:', !!imageError);
+console.log('fileError:', !!fileError);
+
+if (buyerSearchInput && buyerCategoryFilter && listingsGrid && resultsLabel && toggleListingsBtn && sellerForm && sfToast && sfToastMsg && imageUrlInput && imageFileInput && imagePreview && imageError && fileError) {
+  console.log('Elements found, initializing marketplace');
+  let listingsVisible = true;
+
+  function updateToggleLabel() {
+    toggleListingsBtn.textContent = listingsVisible ? 'Hide listings' : 'Show listings';
+  }
+
+  toggleListingsBtn.addEventListener('click', () => {
+    listingsVisible = !listingsVisible;
+    listingsGrid.style.display = listingsVisible ? '' : 'none';
+    updateToggleLabel();
   });
 
-  productsGrid.innerHTML = filtered.length
-    ? filtered.map(p => `
-        <div class="product-card">
-          <div class="product-img-wrap">
-            <img src="${p.img}" alt="${p.name}" loading="lazy" />
-          </div>
-          <div class="product-body">
-            <div class="product-category">${p.category}</div>
-            <div class="product-name">${p.name}</div>
-            <div class="product-price">${p.price}</div>
-            <div class="product-seller">Sold by ${p.seller}</div>
-            <button class="btn-order" data-id="${p.id}" data-name="${p.name}">Order Now</button>
-          </div>
-        </div>
-      `).join('')
-    : '<p style="color:var(--gray-400);padding:20px">No products match your search.</p>';
+  let selectedImageDataUrl = '';
 
-  // Attach order button listeners
-  document.querySelectorAll('.btn-order').forEach(btn => {
-    btn.addEventListener('click', () => openOrderModal(btn.dataset.id, btn.dataset.name));
+  function setPreview(src) {
+    imagePreview.innerHTML = src
+      ? `<img src="${src}" alt="Listing preview" />`
+      : '';
+  }
+
+  imageFileInput.addEventListener('change', () => {
+    fileError.textContent = '';
+    if (!imageFileInput.files || !imageFileInput.files[0]) {
+      selectedImageDataUrl = '';
+      setPreview('');
+      return;
+    }
+
+    const file = imageFileInput.files[0];
+    if (!file.type.startsWith('image/')) {
+      fileError.textContent = 'Please select an image file.';
+      selectedImageDataUrl = '';
+      setPreview('');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      selectedImageDataUrl = reader.result;
+      setPreview(selectedImageDataUrl);
+    };
+    reader.readAsDataURL(file);
   });
+
+  function renderSellerListings() {
+    const query = buyerSearchInput.value.trim().toLowerCase();
+    const filter = buyerCategoryFilter.value;
+    const filtered = sellerListings.filter(item => {
+      if (hiddenListings.has(item.id)) return false;
+      const matchCat = filter === 'all' || item.category === filter;
+      const matchSearch = item.name.toLowerCase().includes(query) ||
+                          item.seller.toLowerCase().includes(query) ||
+                          (item.description || '').toLowerCase().includes(query);
+      return matchCat && matchSearch;
+    });
+
+    resultsLabel.textContent = filtered.length
+      ? `Showing ${filtered.length} listing${filtered.length === 1 ? '' : 's'}`
+      : 'No listings match your search.';
+
+    // Ensure the toggle label is correct when listings are filtered
+    updateToggleLabel();
+
+    listingsGrid.innerHTML = filtered.length
+      ? filtered.map(item => `
+          <div class="listing-card">
+            <div class="listing-img-wrap">
+              <img class="listing-img" src="${item.img || 'https://via.placeholder.com/420x260?text=No+Image'}" alt="${item.name}" loading="lazy" />
+            </div>
+            <div class="listing-card-top">
+              <div class="listing-item-name">${item.name}</div>
+              <span class="listing-badge badge-${item.category}">${item.category}</span>
+            </div>
+            <div class="listing-seller">${item.seller}</div>
+            <div class="listing-desc">${item.description || ''}</div>
+            ${item.socials && (item.socials.phone || item.socials.facebook || item.socials.instagram || item.socials.twitter) ? `
+            <div class="listing-socials">
+              ${item.socials.phone ? `<a href="tel:${item.socials.phone}" class="social-link">📞 ${item.socials.phone}</a>` : ''}
+              ${item.socials.facebook ? `<a href="${item.socials.facebook}" target="_blank" class="social-link">FB</a>` : ''}
+              ${item.socials.instagram ? `<a href="${item.socials.instagram}" target="_blank" class="social-link">IG</a>` : ''}
+              ${item.socials.twitter ? `<a href="${item.socials.twitter}" target="_blank" class="social-link">TW</a>` : ''}
+            </div>
+            ` : ''}
+            <div class="listing-footer">
+              <div class="listing-price">${item.price}</div>
+              <button class="listing-order-btn" data-id="${item.id}" data-name="${item.name}">Order Now</button>
+              <button class="listing-message-btn" data-id="${item.id}" data-seller="${item.seller}">Message</button>
+              <button class="listing-hide-btn" data-id="${item.id}">Hide</button>
+            </div>
+          </div>
+        `).join('')
+      : '<div class="listings-empty"><p>No products match your search. Try a different keyword or category.</p></div>';
+
+    listingsGrid.querySelectorAll('.listing-order-btn').forEach(btn => {
+      btn.addEventListener('click', () => openOrderModal(btn.dataset.id, btn.dataset.name));
+    });
+
+    listingsGrid.querySelectorAll('.listing-message-btn').forEach(btn => {
+      btn.addEventListener('click', () => openChatModal(Number(btn.dataset.id), btn.dataset.seller));
+    });
+
+    listingsGrid.querySelectorAll('.listing-hide-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        hiddenListings.add(Number(btn.dataset.id));
+        renderSellerListings();
+      });
+    });
+  }
+
+  buyerSearchInput.addEventListener('input', renderSellerListings);
+  buyerCategoryFilter.addEventListener('change', renderSellerListings);
+
+  console.log('Adding submit listener');
+  sellerForm.addEventListener('submit', e => {
+    e.preventDefault();
+    console.log('Form submitted');
+    const sellerName = document.getElementById('sf-seller-name').value.trim();
+    const itemName   = document.getElementById('sf-item-name').value.trim();
+const imageUrl   = imageUrlInput.value.trim();
+      const category   = document.getElementById('sf-category').value;
+      const price      = document.getElementById('sf-price').value.trim();
+      const description= document.getElementById('sf-description').value.trim();
+      const facebook   = document.getElementById('sf-facebook').value.trim();
+      const instagram  = document.getElementById('sf-instagram').value.trim();
+      const twitter    = document.getElementById('sf-twitter').value.trim();
+      const phone      = document.getElementById('sf-phone').value.trim();
+
+      console.log('Values:', {sellerName, itemName, imageUrl, category, price, selectedImageDataUrl});
+      
+      if (!imageUrl && !selectedImageDataUrl) {
+        imageError.textContent = 'Please provide an image URL or upload an image.';
+        console.log('No image provided');
+        return;
+      }
+      imageError.textContent = '';
+      fileError.textContent = '';
+
+      if (!sellerName || !itemName || !category || !price) {
+        console.log('Missing required fields');
+        return;
+      }
+
+      console.log('Adding listing');
+      sellerListings.unshift({
+        id: nextListingId++,
+        name: itemName,
+        seller: sellerName,
+        category,
+        price: `JMD ${price}`,
+        img: selectedImageDataUrl || imageUrl,
+        description,
+        socials: { facebook, instagram, twitter, phone }
+      });
+
+      console.log('Listings count:', sellerListings.length);
+    
+      selectedImageDataUrl = '';
+      setPreview('');
+      imageFileInput.value = '';
+
+    sellerForm.reset();
+
+    sfToastMsg.textContent = 'Listing added successfully!';
+    sfToast.classList.add('show');
+    setTimeout(() => {
+      sfToast.classList.remove('show');
+      document.getElementById('buyer-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 2500);
+    buyerCategoryFilter.value = 'all';
+    buyerSearchInput.value = '';
+    renderSellerListings();
+    console.log('Render called');
+  });
+
+  updateToggleLabel();
+  renderSellerListings(); 
 }
 
-// Filter tabs
-filterTabs.addEventListener('click', e => {
-  if (!e.target.classList.contains('filter-tab')) return;
-  currentFilter = e.target.dataset.filter;
-  document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
-  e.target.classList.add('active');
-  renderProducts();
-});
 
-// Search
-productSearch.addEventListener('input', e => {
-  searchQuery = e.target.value;
-  renderProducts();
-});
-
-renderProducts(); // Initial render
-
-/* =============================================================
-   ORDER MODAL
-   ============================================================= */
 const orderModal       = document.getElementById('order-modal');
 const modalClose       = document.getElementById('modal-close');
 const orderForm        = document.getElementById('order-form');
@@ -269,7 +421,7 @@ modalClose.addEventListener('click', closeOrderModal);
 orderModal.addEventListener('click', e => { if (e.target === orderModal) closeOrderModal(); });
 closeSuccess.addEventListener('click', closeOrderModal);
 
-// Order form submit
+// Submit the order form 
 orderForm.addEventListener('submit', e => {
   e.preventDefault();
   const name     = document.getElementById('order-name').value.trim();
@@ -278,21 +430,87 @@ orderForm.addEventListener('submit', e => {
   const location = document.getElementById('order-location').value.trim();
   if (!name || !email || !qty || !location) return;
 
-  // Simulate processing
+  
   orderForm.style.display = 'none';
   orderSuccess.style.display = 'block';
-  successMsg.textContent = `Thank you, ${name}! Your order of ${qty}kg of ${activeProductName} will be delivered to ${location}. Confirmation sent to ${email}.`;
+  successMsg.textContent = `Thank you, ${name}! Your order of ${qty}lb of ${activeProductName} will be delivered to ${location}. Confirmation sent to ${email}.`;
 });
 
-/* =============================================================
-   AI FARMING ASSISTANT
-   ============================================================= */
+
+const sellerChatModal        = document.getElementById('seller-chat-modal');
+const sellerChatClose        = document.getElementById('seller-chat-close');
+const sellerChatSellerName   = document.getElementById('seller-chat-seller-name');
+const sellerChatMessages     = document.getElementById('seller-chat-messages');
+const sellerChatInput        = document.getElementById('seller-chat-input');
+const sellerChatSend         = document.getElementById('seller-chat-send');
+
+let activeChatId = null;
+const chatHistory = {};
+
+function renderChatHistory(listingId) {
+  const history = chatHistory[listingId] || [];
+  sellerChatMessages.innerHTML = history.map(msg => `
+    <div class="chat-bubble ${msg.role}">
+      <div class="chat-bubble-text">${msg.text}</div>
+    </div>
+  `).join('');
+  sellerChatMessages.scrollTop = sellerChatMessages.scrollHeight;
+}
+
+function openChatModal(listingId, seller) {
+  activeChatId = listingId;
+  sellerChatSellerName.textContent = `Message ${seller}`;
+  renderChatHistory(listingId);
+  sellerChatInput.value = '';
+  sellerChatModal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeChatModal() {
+  sellerChatModal.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function addChatMessage(listingId, text, role) {
+  if (!chatHistory[listingId]) chatHistory[listingId] = [];
+  chatHistory[listingId].push({ role, text, time: Date.now() });
+}
+
+function sendChat() {
+  const text = sellerChatInput.value.trim();
+  if (!text || activeChatId == null) return;
+
+  addChatMessage(activeChatId, text, 'user');
+  renderChatHistory(activeChatId);
+  sellerChatInput.value = '';
+
+  
+  setTimeout(() => {
+    const response = `Hi there! Thanks for reaching out. We'll get back to you soon.`;
+    addChatMessage(activeChatId, response, 'seller');
+    renderChatHistory(activeChatId);
+  }, 1000 + Math.random() * 800);
+}
+
+sellerChatSend.addEventListener('click', sendChat);
+sellerChatInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendChat(); });
+
+sellerChatClose.addEventListener('click', closeChatModal);
+sellerChatModal.addEventListener('click', e => { if (e.target === sellerChatModal) closeChatModal(); });
+
 const chatMessages = document.getElementById('chat-messages');
 const chatInput    = document.getElementById('chat-input');
 const chatSend     = document.getElementById('chat-send');
 const quickTopics  = document.querySelectorAll('.quick-topics li');
 
+<<<<<<< HEAD:Backend/script.js
 /** Add a message bubble to the chat */
+=======
+const OPENAI_API_KEY = 'REPLACE_WITH_OPENAI_API_KEY'; // Put your key here when deploying
+const OPENAI_MODEL = 'gpt-4o-mini';
+
+
+>>>>>>> f0e56464f4262a5aa4f4359cbde8175702b5ca15:script.js
 function appendMessage(text, role) {
   const msg = document.createElement('div');
   msg.className = `chat-msg ${role}`;
@@ -305,7 +523,7 @@ function appendMessage(text, role) {
   chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
-/** Show typing indicator */
+
 function showTyping() {
   const indicator = document.createElement('div');
   indicator.className = 'chat-msg ai chat-typing';
@@ -322,7 +540,6 @@ function showTyping() {
   chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
-/** Remove typing indicator */
 function removeTyping() {
   const el = document.getElementById('typing-indicator');
   if (el) el.remove();
@@ -344,6 +561,49 @@ function getAIResponse(userMsg) {
   return AI_RESPONSES.default;
 }
 
+<<<<<<< HEAD:Backend/script.js
+=======
+function getFallbackAIResponse(prompt) {
+  return getAIResponse(prompt);
+}
+
+async function fetchAIResponse(prompt) {
+  if (!OPENAI_API_KEY || OPENAI_API_KEY === 'REPLACE_WITH_OPENAI_API_KEY') {
+    return getFallbackAIResponse(prompt);
+  }
+
+  try {
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${OPENAI_API_KEY}`
+      },
+      body: JSON.stringify({
+        model: OPENAI_MODEL,
+        messages: [
+          { role: 'system', content: 'You are an expert agricultural assistant for Caribbean farmers. Provide practical, concise advice.' },
+          { role: 'user', content: prompt }
+        ],
+        max_tokens: 250,
+        temperature: 0.6
+      })
+    });
+
+    if (!response.ok) {
+      console.error('AI API error', response.status, await response.text());
+      return getFallbackAIResponse(prompt);
+    }
+
+    const data = await response.json();
+    return data?.choices?.[0]?.message?.content?.trim() || getFallbackAIResponse(prompt);
+  } catch (error) {
+    console.error('AI fetch error', error);
+    return getFallbackAIResponse(prompt);
+  }
+}
+
+>>>>>>> f0e56464f4262a5aa4f4359cbde8175702b5ca15:script.js
 /** Handle sending a chat message */
 function sendChatMessage(text) {
   text = text.trim();
@@ -351,17 +611,24 @@ function sendChatMessage(text) {
   appendMessage(text, 'user');
   chatInput.value = '';
   showTyping();
+<<<<<<< HEAD:Backend/script.js
   // Simulate AI thinking delay
   setTimeout(() => {
     removeTyping();
     appendMessage(getAIResponse(text), 'ai');
   }, 1200 + Math.random() * 600);
+=======
+
+  const responseText = await fetchAIResponse(text);
+  removeTyping();
+  appendMessage(responseText, 'ai');
+>>>>>>> f0e56464f4262a5aa4f4359cbde8175702b5ca15:script.js
 }
 
 chatSend.addEventListener('click', () => sendChatMessage(chatInput.value));
 chatInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendChatMessage(chatInput.value); });
 
-// Quick topic shortcuts
+
 quickTopics.forEach(li => {
   li.addEventListener('click', () => {
     sendChatMessage(li.dataset.q);
@@ -370,11 +637,7 @@ quickTopics.forEach(li => {
   });
 });
 
-/* =============================================================
-   WEATHER ALERTS
-   ============================================================= */
 
-/** Render 5-day forecast */
 function renderForecast() {
   const strip = document.getElementById('forecast-strip');
   strip.innerHTML = FORECAST.map(f => `
@@ -386,7 +649,7 @@ function renderForecast() {
   `).join('');
 }
 
-/** Render weather alert cards */
+
 function renderAlerts() {
   const grid = document.getElementById('alerts-grid');
   grid.innerHTML = WEATHER_ALERTS.map(a => `
@@ -401,7 +664,7 @@ function renderAlerts() {
   `).join('');
 }
 
-/** Simulate dynamic weather data refresh */
+
 function simulateWeather() {
   const conditions = ['Partly Cloudy','Sunny','Scattered Showers','Overcast','Humid & Warm'];
   const temps      = [26, 27, 28, 29, 30, 31, 32];
@@ -420,9 +683,7 @@ simulateWeather();
 // Refresh weather data every 30 seconds
 setInterval(simulateWeather, 30000);
 
-/* =============================================================
-   FARMING NEWS
-   ============================================================= */
+
 const newsGrid   = document.getElementById('news-grid');
 const newsFilter = document.getElementById('news-filter');
 
@@ -430,7 +691,6 @@ function regionLabel(r) {
   return { jamaica:'Jamaica', caribbean:'Caribbean', usa:'USA', global:'Global' }[r] || r;
 }
 
-/** Render news cards filtered by region */
 function renderNews(region = 'all') {
   const filtered = region === 'all' ? NEWS : NEWS.filter(n => n.region === region);
   newsGrid.innerHTML = filtered.map(n => `
@@ -450,7 +710,7 @@ function renderNews(region = 'all') {
     </div>
   `).join('');
 
-  // "Read more" buttons open a simple alert (placeholder for real article routing)
+  
   document.querySelectorAll('.btn-read-more').forEach((btn, i) => {
     btn.addEventListener('click', () => {
       alert(`"${filtered[i].title}" — Full article coming soon in the PlantLink News Hub.`);
@@ -461,13 +721,11 @@ function renderNews(region = 'all') {
 newsFilter.addEventListener('change', e => renderNews(e.target.value));
 renderNews(); // Initial render
 
-/* =============================================================
-   CONTACT FORM VALIDATION
-   ============================================================= */
+
 const contactForm    = document.getElementById('contact-form');
 const contactSuccess = document.getElementById('contact-success');
 
-/** Validate a single field and show/clear error message */
+
 function validateField(id, errorId, validator, errorMsg) {
   const field = document.getElementById(id);
   const error = document.getElementById(errorId);
@@ -490,12 +748,12 @@ contactForm.addEventListener('submit', e => {
   if (validName && validEmail && validMsg) {
     contactSuccess.style.display = 'block';
     contactForm.reset();
-    // Hide success after 6 seconds
+  
     setTimeout(() => { contactSuccess.style.display = 'none'; }, 6000);
   }
 });
 
-// Clear field errors on input
+
 ['c-name','c-email','c-msg'].forEach(id => {
   document.getElementById(id).addEventListener('input', () => {
     const errId = { 'c-name':'err-name', 'c-email':'err-email', 'c-msg':'err-msg' }[id];
@@ -504,9 +762,7 @@ contactForm.addEventListener('submit', e => {
   });
 });
 
-/* =============================================================
-   SMOOTH SCROLLING (supplement for browsers without native support)
-   ============================================================= */
+
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', e => {
     e.preventDefault();
@@ -519,8 +775,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-/* =============================================================
-   INITIALISATION LOG
-   ============================================================= */
+
 console.log('%c🌿 PlantLink loaded', 'color:#0ea5e9;font-weight:700;font-size:14px');
 console.log(`Products: ${PRODUCTS.length} | News: ${NEWS.length} | Alerts: ${WEATHER_ALERTS.length}`);

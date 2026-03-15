@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register | PlantLink</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo"><span class="logo-icon">🌿</span><span>PlantLink</span></a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="nav-item">Home</a></li>
+        <li><a href="marketplace.html" class="nav-item">Marketplace</a></li>
+        <li><a href="ai-assistant.html" class="nav-item">AI Assistant</a></li>
+        <li><a href="weather.html" class="nav-item">Weather</a></li>
+        <li><a href="news.html" class="nav-item">Farming News</a></li>
+        <li><a href="contact.html" class="nav-item">Contact</a></li>
+        <li><a href="register.html" class="nav-item active">Register</a></li>
+        <li><a href="Login.html" class="nav-item">Login</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <main class="login-page">
+    <div class="login-wrap">
+      <section class="login-panel">
+        <div class="login-header">
+          <p class="section-tag">Farmer Onboarding</p>
+          <h1>Join PlantLink today</h1>
+          <p class="login-subtitle">Create a secure account to manage produce listings, receive weather alerts, and get AI farming tips.</p>
+        </div>
+
+        <form id="register-only-form" class="login-form" novalidate>
+          <div class="form-group">
+            <label for="r-name">Full name</label>
+            <input id="r-name" name="rName" type="text" placeholder="Asha Thomas" required />
+          </div>
+          <div class="form-group">
+            <label for="r-email">Email</label>
+            <input id="r-email" name="rEmail" type="email" placeholder="you@farmlink.com" required />
+          </div>
+          <div class="form-group">
+            <label for="r-phone">Phone</label>
+            <input id="r-phone" name="rPhone" type="tel" placeholder="+1 246 555 0123" required />
+          </div>
+          <div class="form-group">
+            <label for="r-farm">Farm type</label>
+            <select id="r-farm" name="rFarm" required>
+              <option value="">Choose farm type</option>
+              <option value="vegetables">Vegetables</option>
+              <option value="fruits">Fruits</option>
+              <option value="dairy">Dairy</option>
+              <option value="mixed">Mixed/Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="r-pass">Password</label>
+            <input id="r-pass" name="rPass" type="password" placeholder="At least 8 characters" required minlength="8" />
+          </div>
+          <div class="form-group">
+            <label for="r-confirm">Confirm password</label>
+            <input id="r-confirm" name="rConfirm" type="password" placeholder="Re-enter password" required minlength="8" />
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+          <p class="form-note">Already have an account? <a href="Login.html">Login</a></p>
+        </form>
+
+        <div id="register-only-msg" class="form-success" style="display:none; margin-top:10px;"></div>
+      </section>
+
+      <aside class="login-hero">
+        <div class="hero-pill"><span class="hero-pill-icon">🌱</span><div><h3>Verified network</h3><p>Join a trusted community of farmers and buyers.</p></div></div>
+        <div class="hero-pill"><span class="hero-pill-icon">📦</span><div><h3>Sell faster</h3><p>List produce quickly and receive buyer notifications instantly.</p></div></div>
+        <div class="hero-pill"><span class="hero-pill-icon">📊</span><div><h3>Track growth</h3><p>Get AI insights and weather alerts to improve yields.</p></div></div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="footer" style="padding: 24px 0 18px;">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+      <div style="display:flex;align-items:center;gap:8px;font-weight:600;color:#fff;"><span>🌿</span><span>PlantLink</span></div>
+      <p style="color:#cbd5e1;font-size:.8rem;">© 2026 PlantLink. Trusted agricultural tools for Caribbean farmers.</p>
+    </div>
+  </footer>
+
+  <script>
+    const regForm = document.getElementById('register-only-form');
+    const regMsg = document.getElementById('register-only-msg');
+    regForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = regForm.rName.value.trim();
+      const email = regForm.rEmail.value.trim();
+      const phone = regForm.rPhone.value.trim();
+      const farm = regForm.rFarm.value;
+      const pass = regForm.rPass.value;
+      const confirm = regForm.rConfirm.value;
+      if (!name || !email || !phone || !farm || !pass || pass.length < 8 || pass !== confirm) {
+        regMsg.style.display = 'block';
+        regMsg.style.background = '#fee2e2';
+        regMsg.style.color = '#b91c1c';
+        regMsg.textContent = 'Please complete all fields correctly and ensure passwords match.';
+        return;
+      }
+      regMsg.style.display = 'block';
+      regMsg.style.background = '#e6ffef';
+      regMsg.style.color = '#065f46';
+      regMsg.textContent = 'Account created successfully. Redirecting to login...';
+      setTimeout(() => { window.location.href = 'Login.html'; }, 900);
+    });
+  </script>
+</body>
+</html>

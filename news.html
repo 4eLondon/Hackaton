@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Farming News – PlantLink</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon"></span>
+        <span>PlantLink</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="nav-item active">Home</a></li>
+        <li><a href="marketplace.html" class="nav-item">Marketplace</a></li>
+        <li><a href="ai-assistant.html" class="nav-item">AI Assistant</a></li>
+        <li><a href="weather.html" class="nav-item">Weather</a></li>
+        <li><a href="news.html" class="nav-item">Farming News</a></li>
+        <li><a href="contact.html" class="nav-item">Contact</a></li>
+        <li><a href="register.html" class="nav-item">Register</a></li>
+        <li><a href="Login.html" class="nav-item">Login</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== NEWS SECTION ===== -->
+  <section class="news-section" id="news">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Farming News</span>
+        <h2 class="section-title">Agricultural Insights</h2>
+        <p class="section-desc">The latest news and trends across the farming world.</p>
+      </div>
+      <div class="news-toolbar">
+        <select class="news-filter" id="news-filter">
+          <option value="all">All Regions</option>
+          <option value="jamaica">Jamaica</option>
+          <option value="caribbean">Caribbean</option>
+          <option value="usa">USA</option>
+          <option value="global">Global Agriculture</option>
+        </select>
+      </div>
+      <div class="news-grid" id="news-grid">
+        <!-- Injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">
+            <span class="logo-icon">🌿</span>
+            <span>PlantLink</span>
+          </a>
+          <p>Connecting farmers, buyers, and smart agriculture across Jamaica and the Caribbean.</p>
+        </div>
+        <div class="footer-links">
+          <h5>Platform</h5>
+          <ul>
+            <li><a href="marketplace.html">Marketplace</a></li>
+            <li><a href="ai-assistant.html">AI Assistant</a></li>
+            <li><a href="weather.html">Weather Alerts</a></li>
+            <li><a href="news.html">Farming News</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="contact.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h5>Support</h5>
+          <ul>
+            <li><a href="#">Farmer Guide</a></li>
+            <li><a href="#">Buyer Help</a></li>
+            <li><a href="#">API Docs</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 PlantLink Ltd. All rights reserved. Built for Caribbean Agriculture.</p>
+        <div class="footer-socials">
+          <a href="#">𝕏</a>
+          <a href="#">📸</a>
+          <a href="#">f</a>
+          <a href="#">in</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
