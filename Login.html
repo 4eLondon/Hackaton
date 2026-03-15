@@ -47,7 +47,7 @@
           </div>
           <div class="login-quick">
             <label class="checkbox-wrap"><input type="checkbox" id="remember" name="remember" /> Remember me</label>
-            <a href="#" class="link-small">Forgot password?</a>
+            <a href="#" class="link-small" id="forgot-link">Forgot password?</a>
           </div>
           <button type="submit" class="btn btn-primary btn-full">Log In</button>
           <p class="form-note">New to PlantLink? <a href="contact.html">Request access</a> or <a href="#" id="open-register">Create account</a></p>
@@ -147,14 +147,22 @@
           <h3 id="forgot-title">Recover your PlantLink account</h3>
         </div>
       </div>
-      <p style="color:#475569; margin-bottom:16px;">Enter your email below and we will send a secure reset link to your inbox.</p>
+      <p style="color:#475569; margin-bottom:16px;">To recover your account, enter your email and a new password.</p>
       <form id="forgot-form" class="login-form" novalidate>
         <div class="form-group">
           <label for="forgot-email">Email</label>
           <input id="forgot-email" name="forgotEmail" type="email" placeholder="you@farmlink.com" required />
           <span class="field-error" id="forgot-error" style="display:none;"></span>
         </div>
-        <button type="submit" class="btn btn-primary btn-full">Send reset instructions</button>
+        <div class="form-group">
+          <label for="forgot-password">New password</label>
+          <input id="forgot-password" name="forgotPassword" type="password" placeholder="At least 8 characters" required minlength="8" />
+        </div>
+        <div class="form-group">
+          <label for="forgot-confirm">Confirm new password</label>
+          <input id="forgot-confirm" name="forgotConfirm" type="password" placeholder="Re-enter new password" required minlength="8" />
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Recover & reset password</button>
       </form>
       <div id="forgot-message" class="form-success" style="display:none;"></div>
     </div>
@@ -170,6 +178,5 @@
   </footer>
 
   <script type="module" src="Backend/dataconnet.js"></script>
- </script>
 </body>
 </html>
