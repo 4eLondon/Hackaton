@@ -35,6 +35,65 @@ const FORECAST = [
   { day:'Fri', icon:'⛅', temp:'28°C' },
 ];
 
+const PARISH_WEEKLY = {
+  kingston: [
+    { day:'Mon', desc:'Showers', high:'29°C', low:'24°C', rain:'40%' },
+    { day:'Tue', desc:'Cloudy', high:'28°C', low:'24°C', rain:'35%' },
+    { day:'Wed', desc:'Sunny', high:'30°C', low:'25°C', rain:'15%' },
+    { day:'Thu', desc:'Rain', high:'28°C', low:'24°C', rain:'50%' },
+    { day:'Fri', desc:'Thunder', high:'27°C', low:'23°C', rain:'60%' },
+  ],
+  st_andrew: [
+    { day:'Mon', desc:'Cloudy', high:'28°C', low:'23°C', rain:'30%' },
+    { day:'Tue', desc:'Showers', high:'29°C', low:'24°C', rain:'45%' },
+    { day:'Wed', desc:'Sun & Clouds', high:'30°C', low:'24°C', rain:'20%' },
+    { day:'Thu', desc:'Heavy Rain', high:'27°C', low:'23°C', rain:'55%' },
+    { day:'Fri', desc:'Moderate Rain', high:'28°C', low:'23°C', rain:'50%' },
+  ],
+  st_catherine: [
+    { day:'Mon', desc:'Sunny', high:'31°C', low:'24°C', rain:'10%' },
+    { day:'Tue', desc:'Partly Cloudy', high:'30°C', low:'24°C', rain:'15%' },
+    { day:'Wed', desc:'Showers', high:'29°C', low:'24°C', rain:'35%' },
+    { day:'Thu', desc:'Thunderstorms', high:'28°C', low:'23°C', rain:'50%' },
+    { day:'Fri', desc:'Cloudy', high:'29°C', low:'23°C', rain:'40%' },
+  ],
+  st_james: [
+    { day:'Mon', desc:'Sunny', high:'32°C', low:'25°C', rain:'10%' },
+    { day:'Tue', desc:'Hot', high:'33°C', low:'25°C', rain:'10%' },
+    { day:'Wed', desc:'Clouds', high:'31°C', low:'24°C', rain:'20%' },
+    { day:'Thu', desc:'Showers', high:'30°C', low:'24°C', rain:'35%' },
+    { day:'Fri', desc:'Rain', high:'29°C', low:'24°C', rain:'45%' },
+  ],
+  clarendon: [
+    { day:'Mon', desc:'Sunny', high:'31°C', low:'23°C', rain:'12%' },
+    { day:'Tue', desc:'Partly Cloudy', high:'30°C', low:'23°C', rain:'20%' },
+    { day:'Wed', desc:'Showers', high:'29°C', low:'22°C', rain:'40%' },
+    { day:'Thu', desc:'Heavy Showers', high:'28°C', low:'22°C', rain:'55%' },
+    { day:'Fri', desc:'Cloudy', high:'29°C', low:'23°C', rain:'35%' },
+  ],
+  westmoreland: [
+    { day:'Mon', desc:'Sunny', high:'31°C', low:'24°C', rain:'15%' },
+    { day:'Tue', desc:'Showers', high:'30°C', low:'24°C', rain:'30%' },
+    { day:'Wed', desc:'Sun & Clouds', high:'31°C', low:'24°C', rain:'20%' },
+    { day:'Thu', desc:'Rain', high:'29°C', low:'23°C', rain:'40%' },
+    { day:'Fri', desc:'Partly Cloudy', high:'30°C', low:'23°C', rain:'20%' },
+  ],
+  st_elizabeth: [
+    { day:'Mon', desc:'Sunny', high:'30°C', low:'22°C', rain:'10%' },
+    { day:'Tue', desc:'Cloudy', high:'29°C', low:'22°C', rain:'22%' },
+    { day:'Wed', desc:'Showers', high:'28°C', low:'21°C', rain:'38%' },
+    { day:'Thu', desc:'Heavy Rain', high:'27°C', low:'21°C', rain:'50%' },
+    { day:'Fri', desc:'Clear', high:'29°C', low:'21°C', rain:'15%' },
+  ],
+  st_ann: [
+    { day:'Mon', desc:'Cloudy', high:'29°C', low:'23°C', rain:'30%' },
+    { day:'Tue', desc:'Showers', high:'29°C', low:'24°C', rain:'35%' },
+    { day:'Wed', desc:'Sun & Clouds', high:'30°C', low:'24°C', rain:'25%' },
+    { day:'Thu', desc:'Rain', high:'28°C', low:'23°C', rain:'45%' },
+    { day:'Fri', desc:'Thunderstorms', high:'27°C', low:'23°C', rain:'50%' },
+  ]
+};
+
 
 const NEWS = [
   {
@@ -97,17 +156,83 @@ const NEWS = [
 
 
 const AI_RESPONSES = {
-  yellow: "Yellow leaves often signal a nitrogen deficiency. Apply a balanced nitrogen fertiliser (e.g., urea at 46-0-0) and ensure proper soil drainage. If yellowing starts at the base and moves upward, this is a classic nitrogen deficiency pattern. Consider a soil test to confirm.",
-  tomato: "For tomatoes, ensure full sun (6–8 hours), well-drained soil with a pH of 6.0–6.8, and consistent watering. Common diseases include early blight and bacterial wilt. Rotate crops yearly and use copper-based fungicides preventatively.",
-  pepper: "Sweet peppers thrive in warm, well-drained soil. Space plants 45cm apart and water deeply but infrequently. Blossom drop is often caused by temperature extremes. Provide afternoon shade in peak heat (above 35°C).",
-  fertiliser: "A general guideline: use NPK 10-10-10 at planting for balanced establishment. Switch to a lower-nitrogen, higher-phosphorus and potassium blend (e.g., 5-10-10) during flowering and fruiting to encourage yield over leaf growth.",
-  irrigation: "Drip irrigation is 90% more efficient than overhead sprinklers for most crops. Water early morning to reduce evaporation. For vegetables, aim for 25–35mm of water per week. Install a soil moisture sensor to avoid over- or under-watering.",
-  rain: "Before heavy rain, ensure field drainage channels are clear. Hill up soil around root crops. Stake tall plants like corn and plantains. After flooding, apply a preventative fungicide as wet conditions promote disease.",
-  drought: "During drought, mulch soil with 5–8cm of organic material to retain moisture. Use deficit irrigation — water only when crops show mild stress signs. Prioritise water for reproductive stages (flowering, fruit set).",
-  disease: "Common crop diseases in Jamaica include Phytophthora blight, anthracnose, and bacterial wilt. Prevention is key: use disease-resistant varieties, practice crop rotation, and avoid overhead watering. Remove and destroy infected plant material immediately.",
-  planting: "Best planting times in Jamaica depend on rainfall patterns. The main dry season (December–March) suits crops that need less water. The rainy season (May–November) is ideal for most vegetables with good drainage.",
-  potato: "Irish potatoes grow best at elevations above 500m in Jamaica. Plant certified seed potatoes in well-drained, slightly acidic soil (pH 5.5–6.5). Hill soil as plants grow. Harvest when foliage yellows.",
-  default: "That's a great question! For the best agricultural advice tailored to your specific crop and location, I'd recommend also consulting with your local parish agricultural extension officer. Generally, healthy crops need balanced nutrition, consistent moisture, good drainage, and disease prevention. What crop or specific challenge are you dealing with?"
+  yellow: [
+    "Yellow leaves often signal a nitrogen deficiency. Apply a balanced nitrogen fertiliser (e.g., urea at 46-0-0) and ensure proper soil drainage.",
+    "Yellowing can also indicate overwatering in poorly drained soils. Improve drainage and apply slow-release nitrogen.",
+    "If leaves turn yellow from the base upward, this is classic nitrogen deficiency. Use foliar feeding and perform a quick soil test.",
+    "Healthy tomato foliage should be dark green. If yellow develops, check soil moisture and add composted manure for nutrients.",
+    "Persistent yellowing often comes from root stress. Adjust irrigation schedule and add organic matter to strengthen roots."
+  ],
+  tomato: [
+    "For tomatoes, ensure full sun (6–8 hours), well-drained soil with a pH of 6.0–6.8, and consistent watering.",
+    "Use staking or cages to support tomato vines and improve airflow to reduce fungal disease risk.",
+    "Tomato plants benefit from bi-weekly feeding with a balanced 10-10-10 fertilizer during vegetative growth.",
+    "Rotate your tomato beds each season to reduce soil-borne diseases and increase yields.",
+    "Mulch around tomato plants to keep soil temperature stable and preserve moisture during dry spells."
+  ],
+  pepper: [
+    "Sweet peppers thrive in warm, well-drained soil. Space plants 45cm apart and water deeply but infrequently.",
+    "Protect peppers from extreme heat by providing afternoon shade when temperatures exceed 35°C.",
+    "Regular side-dressing with compost improves pepper fruit set and flavour.",
+    "Stake pepper plants early to support branches once fruit begins to form.",
+    "Use high-phosphorus fertilizer at bloom to encourage strong flowering and fruiting."
+  ],
+  fertiliser: [
+    "A general guideline: use NPK 10-10-10 at planting. For flowering, switch to 5-10-10.",
+    "Soil testing gives the best fertilizer plan; without it, use balanced low-risk blends and adjust after harvest.",
+    "Apply small amounts frequently rather than one heavy dose to avoid nutrient lock-up.",
+    "Include organic inputs like compost to improve nutrient retention and soil biology.",
+    "Avoid applying nitrogen right before heavy rain to prevent runoff and waste."
+  ],
+  irrigation: [
+    "Drip irrigation is 90% more efficient than overhead sprinklers. Water early in the morning.",
+    "Aim for 25–35mm of water per week for vegetables, less for drought-tolerant crops.",
+    "Use moisture sensors and irrigate only when the topsoil begins to dry.",
+    "Mulch reduces evaporation and helps maintain even soil moisture after irrigation.",
+    "Avoid wetting leaves to lower disease risk; target water at the base of plants."
+  ],
+  rain: [
+    "Before heavy rain, clear drainage channels and hill up root crops.",
+    "Protect seedlings with temporary covers and delay fertilizer application.",
+    "Use raised beds if fields are prone to standing water during storms.",
+    "Apply potassium-rich foliar feed after heavy rain to support stress recovery.",
+    "Inspect fields promptly and remove plants showing rot after prolonged wet periods."
+  ],
+  drought: [
+    "During drought, mulch with 5–8cm of organic material to retain moisture.",
+    "Use deficit irrigation and prioritize water for fruiting crops.",
+    "Plant drought-tolerant varieties and reduce plant density during dry seasons.",
+    "Monitor leaf wilting early; rehydrate before recovery becomes difficult.",
+    "Minimal tillage helps preserve moisture and reduces soil erosion."
+  ],
+  disease: [
+    "Use resistant varieties and rotate crops to break disease cycles.",
+    "Keep foliage dry and remove infected plant parts immediately.",
+    "Improve spacing for airflow and apply preventative fungicides as needed.",
+    "Sanitize tools between fields to avoid spreading pathogens.",
+    "Keep a scouting log to spot disease patterns early and act quickly."
+  ],
+  planting: [
+    "Planting windows in Jamaica depend on local rainfall; dry season suits less water-intensive crops.",
+    "For most vegetables, the rainy season is best with good drainage and nitrogen management.",
+    "Use nurseries for precise timing and transplant when soils are warm and damp.",
+    "Introduce legume cover crops before main planting to improve soil fertility.",
+    "Seed spacing and depth are critical for strong emergence—follow seed packet recommendations."
+  ],
+  potato: [
+    "Irish potatoes prefer elevations above 500m and slightly acidic soil (pH 5.5–6.5).",
+    "Hill soil around potato stems regularly to protect tubers and reduce greening.",
+    "Plant certified seed potatoes and avoid planting in the same bed each season.",
+    "Water consistently; dry cycles during tuber enlargement can reduce yield.",
+    "Monitor for late blight and treat early with copper-based sprays when needed."
+  ],
+  default: [
+    "That's a great question! For tailored advice, consult your local extension officer.",
+    "Healthy crops need balanced nutrition, consistent moisture, good drainage, and disease prevention.",
+    "Start with a soil test and local climate pattern before making major changes.",
+    "Use simple interventions like mulch, proper spacing, and rotation to improve most outcomes.",
+    "For a quick win, check irrigation timing and weed control first."
+  ]
 };
 
 const PLANTING_DEFS = {
@@ -533,6 +658,7 @@ sellerChatModal.addEventListener('click', e => { if (e.target === sellerChatModa
 
 function renderForecast() {
   const strip = document.getElementById('forecast-strip');
+  if (!strip) return;
   strip.innerHTML = FORECAST.map(f => `
     <div class="forecast-day">
       <div class="fd-day">${f.day}</div>
@@ -540,6 +666,37 @@ function renderForecast() {
       <div class="fd-temp">${f.temp}</div>
     </div>
   `).join('');
+}
+
+function renderParishWeather(parish = 'kingston') {
+  const daily = PARISH_WEEKLY[parish] || PARISH_WEEKLY.kingston;
+  const dailySummary = document.getElementById('parish-daily-summary');
+  const weeklyList = document.getElementById('parish-weekly-list');
+  if (!dailySummary || !weeklyList) return;
+
+  const today = daily[0];
+  dailySummary.innerHTML = `
+    <div><strong>Today in ${parish.replace('_', ' ').replace(/\b\w/g, c => c.toUpperCase())}</strong></div>
+    <div>🌦️ ${today.desc} — High ${today.high} / Low ${today.low}</div>
+    <div>💧 Rain chance: ${today.rain}</div>
+  `;
+
+  weeklyList.innerHTML = daily.map(d => `
+    <div class="parish-week-item">
+      <p><strong>${d.day}</strong></p>
+      <p>${d.desc}</p>
+      <p>High ${d.high} | Low ${d.low} | ${d.rain} rain</p>
+    </div>
+  `).join('');
+}
+
+function initParishSelector() {
+  const select = document.getElementById('parish-select');
+  if (!select) return;
+  select.addEventListener('change', () => {
+    renderParishWeather(select.value);
+  });
+  renderParishWeather(select.value);
 }
 
 
@@ -573,6 +730,7 @@ function simulateWeather() {
 renderForecast();
 renderAlerts();
 simulateWeather();
+initParishSelector();
 // Refresh weather data every 30 seconds
 setInterval(simulateWeather, 30000);
 

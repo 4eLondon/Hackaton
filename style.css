@@ -1154,6 +1154,37 @@ input, textarea, select, button { font-family: inherit; }
   background: #fbfdff;
 }
 
+.parish-weather-panel {
+  margin-top: 16px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--gray-200);
+  background: #fff;
+  padding: 14px;
+  box-shadow: var(--shadow-sm);
+}
+.parish-headline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.parish-headline h4 { margin: 0; font-size: 1rem; color: #0f172a; }
+.parish-headline p { margin: 0; color: #4b5563; font-size: .88rem; }
+.parish-select-wrap { display:flex; align-items:center; gap: 6px; }
+.parish-select-wrap label { font-weight:600; font-size:.84rem; color:#334155; }
+#parish-select { border:1px solid #cbd5e1; border-radius:8px; padding:6px 10px; }
+.parish-daily-summary,
+.parish-weekly-list { margin-top: 10px; border-radius: 10px; border: 1px solid #e2e8f0; background: #f9fafb; padding: 10px; }
+.parish-daily-summary { display: grid; gap: 6px; }
+.parish-daily-summary strong { color: #1d4ed8; }
+.parish-weekly-list { display: grid; gap: 8px; }
+.parish-week-item { display: grid; grid-template-columns: 1fr 1fr 1fr; align-items:center; gap: 8px; background:#fff; border:1px solid #e2e8f0; border-radius:8px; padding:8px; }
+.parish-week-item p { margin:0; font-size:.83rem; color:#334155; }
+.met-center-note { margin-top: 12px; font-size: .83rem; color: #1f2937; }
+.met-center-note a { color: #0ea5e9; }
+
 .pl-container {
   max-width: 1180px;
   margin: 0 auto;
