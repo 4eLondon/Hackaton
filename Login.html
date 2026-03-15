@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | PlantLink</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo"><span class="logo-icon">🌿</span><span>PlantLink</span></a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="nav-item">Home</a></li>
+        <li><a href="marketplace.html" class="nav-item">Marketplace</a></li>
+        <li><a href="ai-assistant.html" class="nav-item">AI Assistant</a></li>
+        <li><a href="weather.html" class="nav-item">Weather</a></li>
+        <li><a href="news.html" class="nav-item">Farming News</a></li>
+        <li><a href="contact.html" class="nav-item">Contact</a></li>
+        <li><a href="Login.html" class="nav-item active">Login</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <main class="login-page">
+    <div class="login-wrap">
+      <section class="login-panel">
+        <div class="login-header">
+          <p class="section-tag">Secure Access</p>
+          <h1>Welcome back to PlantLink</h1>
+          <p class="login-subtitle">Login to manage your farm, track marketplace orders, and get AI crop support in one place.</p>
+        </div>
+
+        <form id="login-form" class="login-form" novalidate>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@farmlink.com" required />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" placeholder="••••••••" required minlength="8" />
+          </div>
+          <div class="login-quick">
+            <label class="checkbox-wrap"><input type="checkbox" id="remember" name="remember" /> Remember me</label>
+            <a href="#" class="link-small">Forgot password?</a>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Log In</button>
+          <p class="form-note">New to PlantLink? <a href="contact.html">Request access</a> or <a href="#" id="open-register">Create account</a></p>
+        </form>
+
+        <div id="login-message" class="form-success" style="display:none;"></div>
+      </section>
+
+      <aside class="login-hero">
+        <div class="hero-pill">
+          <span class="hero-pill-icon">🚜</span>
+          <div>
+            <h3>Built for Farmers</h3>
+            <p>One dashboard to manage harvest, orders, and AI agronomy from anywhere.</p>
+          </div>
+        </div>
+        <div class="hero-pill">
+          <span class="hero-pill-icon">⚡</span>
+          <div>
+            <h3>Fast & Secure</h3>
+            <p>Bank-level encryption with modern login protections and user controls.</p>
+          </div>
+        </div>
+        <div class="hero-pill">
+          <span class="hero-pill-icon">📈</span>
+          <div>
+            <h3>Actionable Insights</h3>
+            <p>Get crop alerts, weather updates, and marketplace performance metrics instantly.</p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <div id="register-modal" class="modal-overlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="register-title">
+      <button class="modal-close" id="register-close" aria-label="Close">✕</button>
+      <div class="modal-header">
+        <span class="modal-icon">🌱</span>
+        <div>
+          <p class="section-tag">Create account</p>
+          <h3 id="register-title">Start your PlantLink account</h3>
+        </div>
+      </div>
+      <p style="color:#475569; margin-bottom:16px;">Use your farmer profile to track crops, orders, weather, and AI recommendations.</p>
+      <form id="register-form" class="login-form" novalidate>
+        <div class="form-group">
+          <label for="full-name">Full name</label>
+          <input id="full-name" name="fullName" type="text" placeholder="e.g. Asha Thomas" required />
+          <span class="field-error" id="name-error" style="display:none;"></span>
+        </div>
+        <div class="form-group">
+          <label for="register-email">Email</label>
+          <input id="register-email" name="registerEmail" type="email" placeholder="you@farmlink.com" required />
+          <span class="field-error" id="email-error" style="display:none;"></span>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input id="phone" name="phone" type="tel" placeholder="+1 246 555 0123" required pattern="^\+?[0-9\-\s]{7,20}$" />
+          <span class="field-error" id="phone-error" style="display:none;"></span>
+        </div>
+        <div class="form-group">
+          <label for="farm-type">Farm type</label>
+          <select id="farm-type" name="farmType" required>
+            <option value="">Choose your farm type</option>
+            <option value="vegetables">Vegetables</option>
+            <option value="fruits">Fruits</option>
+            <option value="dairy">Dairy</option>
+            <option value="mixed">Mixed/Other</option>
+          </select>
+          <span class="field-error" id="farm-error" style="display:none;"></span>
+        </div>
+        <div class="form-group">
+          <label for="register-password">Password</label>
+          <input id="register-password" name="registerPassword" type="password" placeholder="At least 8 characters" required minlength="8" />
+          <span class="field-error" id="password-error" style="display:none;"></span>
+        </div>
+        <div class="form-group">
+          <label for="confirm-password">Confirm password</label>
+          <input id="confirm-password" name="confirmPassword" type="password" placeholder="Re-enter your password" required minlength="8" />
+          <span class="field-error" id="confirm-error" style="display:none;"></span>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Create account</button>
+        <p class="form-note" style="margin-top:12px;">Already registered? <a href="#" id="back-to-login">Back to login</a></p>
+      </form>
+      <div id="register-message" class="form-success" style="display:none;"></div>
+    </div>
+  </div>
+
+  <footer class="footer" style="padding: 24px 0 18px;">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+      <div style="display:flex;align-items:center;gap:8px;font-weight:600;color:#fff;">
+        <span>🌿</span><span>PlantLink</span>
+      </div>
+      <p style="color:#cbd5e1;font-size:.8rem;">© 2026 PlantLink. Trusted agricultural tools for Caribbean farmers.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="Backend/dataconnet.js"></script>
+</body>
+</html>
