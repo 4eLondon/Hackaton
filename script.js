@@ -1,4 +1,6 @@
 
+console.log('Script loaded');
+
 const PRODUCTS = [
   { id:1, name:'Tomatoes',   category:'vegetable', price:'JMD 350/lb',  seller:'Green Hills Farm',   img:'https://www.almanac.com/sites/default/files/styles/or/public/image_nodes/tomatoes_helios4eos_gettyimages-edit.jpg?itok=AFHF0CtR'},
   { id:2, name:'Sweet Pepper',    category:'vegetable', price:'JMD 400/lb',  seller:'St.Ann Farm Go',       img:'https://www.easytogrowbulbs.com/cdn/shop/files/SweetBellPepperPlantinaRaisedBed_Gemini-sqWeb.jpg?v=1739994661&width=823' },
@@ -195,7 +197,22 @@ let nextListingId = PRODUCTS.length + 1;
 
 const hiddenListings = new Set();
 
+console.log('buyerSearchInput:', !!buyerSearchInput);
+console.log('buyerCategoryFilter:', !!buyerCategoryFilter);
+console.log('listingsGrid:', !!listingsGrid);
+console.log('resultsLabel:', !!resultsLabel);
+console.log('toggleListingsBtn:', !!toggleListingsBtn);
+console.log('sellerForm:', !!sellerForm);
+console.log('sfToast:', !!sfToast);
+console.log('sfToastMsg:', !!sfToastMsg);
+console.log('imageUrlInput:', !!imageUrlInput);
+console.log('imageFileInput:', !!imageFileInput);
+console.log('imagePreview:', !!imagePreview);
+console.log('imageError:', !!imageError);
+console.log('fileError:', !!fileError);
+
 if (buyerSearchInput && buyerCategoryFilter && listingsGrid && resultsLabel && toggleListingsBtn && sellerForm && sfToast && sfToastMsg && imageUrlInput && imageFileInput && imagePreview && imageError && fileError) {
+  console.log('Elements found, initializing marketplace');
   let listingsVisible = true;
 
   function updateToggleLabel() {
@@ -308,8 +325,10 @@ if (buyerSearchInput && buyerCategoryFilter && listingsGrid && resultsLabel && t
   buyerSearchInput.addEventListener('input', renderSellerListings);
   buyerCategoryFilter.addEventListener('change', renderSellerListings);
 
+  console.log('Adding submit listener');
   sellerForm.addEventListener('submit', e => {
     e.preventDefault();
+    console.log('Form submitted');
     const sellerName = document.getElementById('sf-seller-name').value.trim();
     const itemName   = document.getElementById('sf-item-name').value.trim();
 const imageUrl   = imageUrlInput.value.trim();
@@ -321,16 +340,22 @@ const imageUrl   = imageUrlInput.value.trim();
       const twitter    = document.getElementById('sf-twitter').value.trim();
       const phone      = document.getElementById('sf-phone').value.trim();
 
+      console.log('Values:', {sellerName, itemName, imageUrl, category, price, selectedImageDataUrl});
       
       if (!imageUrl && !selectedImageDataUrl) {
         imageError.textContent = 'Please provide an image URL or upload an image.';
+        console.log('No image provided');
         return;
       }
       imageError.textContent = '';
       fileError.textContent = '';
 
-      if (!sellerName || !itemName || !category || !price) return;
+      if (!sellerName || !itemName || !category || !price) {
+        console.log('Missing required fields');
+        return;
+      }
 
+      console.log('Adding listing');
       sellerListings.unshift({
         id: nextListingId++,
         name: itemName,
@@ -342,6 +367,7 @@ const imageUrl   = imageUrlInput.value.trim();
         socials: { facebook, instagram, twitter, phone }
       });
 
+      console.log('Listings count:', sellerListings.length);
     
       selectedImageDataUrl = '';
       setPreview('');
@@ -351,9 +377,14 @@ const imageUrl   = imageUrlInput.value.trim();
 
     sfToastMsg.textContent = 'Listing added successfully!';
     sfToast.classList.add('show');
-    setTimeout(() => sfToast.classList.remove('show'), 2500);
-    document.getElementById('buyer-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    renderSellerListings(); 
+    setTimeout(() => {
+      sfToast.classList.remove('show');
+      document.getElementById('buyer-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 2500);
+    buyerCategoryFilter.value = 'all';
+    buyerSearchInput.value = '';
+    renderSellerListings();
+    console.log('Render called');
   });
 
   updateToggleLabel();
