@@ -16,7 +16,6 @@ The project is built with a simple yet effective tech stack:
 - **Marketplace**: Buy and sell agricultural products directly.
 - **AI Assistant**: Get AI-powered advice on farming techniques and crop management.
 - **Weather**: Access real-time weather forecasts tailored for farming.
-- **Farming News**: Stay updated with the latest news in agriculture.
 - **User Authentication**: Register and login to personalize your experience.
 - **Contact**: Reach out for support or inquiries.
 
