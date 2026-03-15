@@ -81,6 +81,32 @@
           <div class="forecast-strip" id="forecast-strip">
             <!-- Injected by JS -->
           </div>
+          <div class="parish-weather-panel">
+            <div class="parish-headline">
+              <div>
+                <h4>Jamaica Parish Weather Report</h4>
+                <p>Pick a parish to view the weekly farming weather and daily outlook.</p>
+              </div>
+              <div class="parish-select-wrap">
+                <label for="parish-select">Parish:</label>
+                <select id="parish-select">
+                  <option value="kingston">Kingston</option>
+                  <option value="st_andrew">St. Andrew</option>
+                  <option value="st_catherine">St. Catherine</option>
+                  <option value="st_james">St. James</option>
+                  <option value="clarendon">Clarendon</option>
+                  <option value="westmoreland">Westmoreland</option>
+                  <option value="st_elizabeth">St. Elizabeth</option>
+                  <option value="st_ann">St. Ann</option>
+                </select>
+              </div>
+            </div>
+            <div class="parish-daily-summary" id="parish-daily-summary"></div>
+            <div class="parish-weekly-list" id="parish-weekly-list"></div>
+            <div class="met-center-note">
+              <strong>Official Jamaica Met Center:</strong> <a href="https://www.metservice.gov.jm" target="_blank">metservice.gov.jm</a> — use updates for advisories, rainfall, and cyclone warnings.
+            </div>
+          </div>
         </div>
         <h3 class="alerts-heading">Active Alerts</h3>
         <div class="alerts-grid" id="alerts-grid">

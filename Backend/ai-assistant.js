@@ -49,19 +49,24 @@ function removeTyping() {
   if (el) el.remove();
 }
 
+function pickRandom(responseArray) {
+  if (!Array.isArray(responseArray)) return responseArray;
+  return responseArray[Math.floor(Math.random() * responseArray.length)];
+}
+
 function getAIResponse(userMsg) {
   const msg = userMsg.toLowerCase();
-  if (msg.includes('yellow') || msg.includes('yellowing'))       return AI_RESPONSES.yellow;
-  if (msg.includes('tomato'))                                    return AI_RESPONSES.tomato;
-  if (msg.includes('pepper'))                                    return AI_RESPONSES.pepper;
-  if (msg.includes('fertiliser') || msg.includes('fertilizer')) return AI_RESPONSES.fertiliser;
-  if (msg.includes('irrig') || msg.includes('water'))           return AI_RESPONSES.irrigation;
-  if (msg.includes('rain') || msg.includes('flood'))             return AI_RESPONSES.rain;
-  if (msg.includes('drought') || msg.includes('dry'))            return AI_RESPONSES.drought;
-  if (msg.includes('disease') || msg.includes('blight') || msg.includes('fungus')) return AI_RESPONSES.disease;
-  if (msg.includes('plant') && msg.includes('when'))             return AI_RESPONSES.planting;
-  if (msg.includes('potato'))                                    return AI_RESPONSES.potato;
-  return AI_RESPONSES.default;
+  if (msg.includes('yellow') || msg.includes('yellowing'))       return pickRandom(AI_RESPONSES.yellow);
+  if (msg.includes('tomato'))                                    return pickRandom(AI_RESPONSES.tomato);
+  if (msg.includes('pepper'))                                    return pickRandom(AI_RESPONSES.pepper);
+  if (msg.includes('fertiliser') || msg.includes('fertilizer')) return pickRandom(AI_RESPONSES.fertiliser);
+  if (msg.includes('irrig') || msg.includes('water'))           return pickRandom(AI_RESPONSES.irrigation);
+  if (msg.includes('rain') || msg.includes('flood'))             return pickRandom(AI_RESPONSES.rain);
+  if (msg.includes('drought') || msg.includes('dry'))            return pickRandom(AI_RESPONSES.drought);
+  if (msg.includes('disease') || msg.includes('blight') || msg.includes('fungus')) return pickRandom(AI_RESPONSES.disease);
+  if (msg.includes('plant') && msg.includes('when'))             return pickRandom(AI_RESPONSES.planting);
+  if (msg.includes('potato'))                                    return pickRandom(AI_RESPONSES.potato);
+  return pickRandom(AI_RESPONSES.default);
 }
 
 function sendChatMessage(text) {
