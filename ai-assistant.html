@@ -108,6 +108,68 @@
             </div>
           </div>
         </div>
+
+        <div class="planting-definitions-card">
+          <div class="planting-card-head">
+            <div>
+              <span class="section-tag">Crop Planting</span>
+              <h3>Planting Definitions Lookup</h3>
+              <p>Choose a planting term to view the definition and quick guidance.</p>
+            </div>
+            <div class="planting-select-row">
+              <label for="planting-topic">Pick topic:</label>
+              <select id="planting-topic">
+                <option value="seedbed">Seedbed Preparation</option>
+                <option value="germination">Germination</option>
+                <option value="transplanting">Transplanting</option>
+                <option value="mulching">Mulching</option>
+                <option value="fertilization">Fertilization</option>
+                <option value="irrigation">Irrigation</option>
+              </select>
+              <button class="search-topic-btn" id="search-topic-btn" type="button">🔍 Search</button>
+            </div>
+          </div>
+
+          <div class="selected-topic-card" id="selected-topic-card">
+            <div class="selected-topic-title">Selected topic details</div>
+            <div class="selected-topic-content" id="selected-topic-content">
+              <div class="selected-topic-term"><strong>Seedbed Preparation</strong></div>
+              <div class="selected-topic-definition">Prepare fine, loose soil with organic matter and good drainage before sowing seeds.</div>
+              <div class="selected-topic-tip">Tip: Remove weeds and level soil; add compost for nutrients.</div>
+            </div>
+          </div>
+
+          <div class="planting-table-wrap">
+            <table id="planting-definition-table">
+              <thead>
+                <tr>
+                  <th>Term</th>
+                  <th>Definition</th>
+                  <th>Quick Tip</th>
+                </tr>
+              </thead>
+              <tbody id="planting-definition-body">
+                <tr>
+                  <td>Seedbed Preparation</td>
+                  <td>Loosen and level soil before planting seeds.</td>
+                  <td>Remove weeds and add compost.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="topic-window" id="topic-window" aria-hidden="true">
+            <div class="topic-window-header">
+              <div>Topic details</div>
+              <button id="close-topic-window" class="topic-window-close">✕</button>
+            </div>
+            <div id="topic-window-content" class="topic-window-content">
+              <div class="selected-topic-term"><strong>Seedbed Preparation</strong></div>
+              <div class="selected-topic-definition">Prepare fine, loose soil with organic matter and good drainage before sowing seeds.</div>
+              <div class="selected-topic-tip">Tip: Remove weeds and level soil; add compost for nutrients.</div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -169,6 +231,7 @@
     </footer>
 
     <script src="Backend/script.js"></script>
+    <script src="Backend/ai-assistant.js"></script>
   </body>
 </html>
 

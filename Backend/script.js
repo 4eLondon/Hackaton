@@ -110,6 +110,39 @@ const AI_RESPONSES = {
   default: "That's a great question! For the best agricultural advice tailored to your specific crop and location, I'd recommend also consulting with your local parish agricultural extension officer. Generally, healthy crops need balanced nutrition, consistent moisture, good drainage, and disease prevention. What crop or specific challenge are you dealing with?"
 };
 
+const PLANTING_DEFS = {
+  seedbed: {
+    term: 'Seedbed Preparation',
+    definition: 'Prepare fine, loose soil with organic matter and good drainage before sowing seeds.',
+    tip: 'Remove weeds and level soil; add compost for nutrients.'
+  },
+  germination: {
+    term: 'Germination',
+    definition: 'The process where seeds sprout and early leaves emerge under proper moisture and temperature.',
+    tip: 'Keep soil moist but not waterlogged and provide gentle shade for sensitive seeds.'
+  },
+  transplanting: {
+    term: 'Transplanting',
+    definition: 'Moving seedlings from nursery trays into the field at the right age and spacing.',
+    tip: 'Harden off seedlings first and plant in the cooler part of the day.'
+  },
+  mulching: {
+    term: 'Mulching',
+    definition: 'Covering soil with organic material to retain moisture, suppress weeds, and regulate temperature.',
+    tip: 'Use straw or grass clippings; keep mulch 2-3 cm from stems.'
+  },
+  fertilization: {
+    term: 'Fertilization',
+    definition: 'Applying nutrients to soil to support plant growth during key stages.',
+    tip: 'Use split applications and avoid over-application near roots.'
+  },
+  irrigation: {
+    term: 'Irrigation',
+    definition: 'Supplying water to crops in controlled amounts, especially during dry spells.',
+    tip: 'Use drip irrigation where possible and check soil moisture frequently.'
+  }
+};
+
 
 const navbar    = document.getElementById('navbar');
 const hamburger = document.getElementById('hamburger');
@@ -497,89 +530,6 @@ sellerChatInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendCh
 
 sellerChatClose.addEventListener('click', closeChatModal);
 sellerChatModal.addEventListener('click', e => { if (e.target === sellerChatModal) closeChatModal(); });
-
-const chatMessages = document.getElementById('chat-messages');
-const chatInput    = document.getElementById('chat-input');
-const chatSend     = document.getElementById('chat-send');
-const quickTopics  = document.querySelectorAll('.quick-topics li');
-
-
-function appendMessage(text, role) {
-  const msg = document.createElement('div');
-  msg.className = `chat-msg ${role}`;
-  const avatar = role === 'ai' ? '🌿' : '👤';
-  msg.innerHTML = `
-    <div class="msg-avatar">${avatar}</div>
-    <div class="msg-bubble">${text}</div>
-  `;
-  chatMessages.appendChild(msg);
-  chatMessages.scrollTop = chatMessages.scrollHeight;
-}
-
-
-function showTyping() {
-  const indicator = document.createElement('div');
-  indicator.className = 'chat-msg ai chat-typing';
-  indicator.id = 'typing-indicator';
-  indicator.innerHTML = `
-    <div class="msg-avatar">🌿</div>
-    <div class="msg-bubble">
-      <span class="typing-dot"></span>
-      <span class="typing-dot"></span>
-      <span class="typing-dot"></span>
-    </div>
-  `;
-  chatMessages.appendChild(indicator);
-  chatMessages.scrollTop = chatMessages.scrollHeight;
-}
-
-function removeTyping() {
-  const el = document.getElementById('typing-indicator');
-  if (el) el.remove();
-}
-
-
-function getAIResponse(userMsg) {
-  const msg = userMsg.toLowerCase();
-  if (msg.includes('yellow') || msg.includes('yellowing'))       return AI_RESPONSES.yellow;
-  if (msg.includes('tomato'))                                    return AI_RESPONSES.tomato;
-  if (msg.includes('pepper'))                                    return AI_RESPONSES.pepper;
-  if (msg.includes('fertiliser') || msg.includes('fertilizer')) return AI_RESPONSES.fertiliser;
-  if (msg.includes('irrig') || msg.includes('water'))           return AI_RESPONSES.irrigation;
-  if (msg.includes('rain') || msg.includes('flood'))             return AI_RESPONSES.rain;
-  if (msg.includes('drought') || msg.includes('dry'))            return AI_RESPONSES.drought;
-  if (msg.includes('disease') || msg.includes('blight') || msg.includes('fungus')) return AI_RESPONSES.disease;
-  if (msg.includes('plant') && msg.includes('when'))             return AI_RESPONSES.planting;
-  if (msg.includes('potato'))                                    return AI_RESPONSES.potato;
-  return AI_RESPONSES.default;
-}
-
-
-function sendChatMessage(text) {
-  text = text.trim();
-  if (!text) return;
-  appendMessage(text, 'user');
-  chatInput.value = '';
-  showTyping();
-  
-  setTimeout(() => {
-    removeTyping();
-    appendMessage(getAIResponse(text), 'ai');
-  }, 1200 + Math.random() * 600);
-}
-
-chatSend.addEventListener('click', () => sendChatMessage(chatInput.value));
-chatInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendChatMessage(chatInput.value); });
-
-
-quickTopics.forEach(li => {
-  li.addEventListener('click', () => {
-    sendChatMessage(li.dataset.q);
-   
-    chatMessages.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-});
-
 
 function renderForecast() {
   const strip = document.getElementById('forecast-strip');

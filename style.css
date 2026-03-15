@@ -1000,6 +1000,160 @@ input, textarea, select, button { font-family: inherit; }
 
  
 
+.planting-definitions-card {
+  margin-top: 24px;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+  padding: 18px;
+}
+.planting-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.planting-card-head h3 {
+  margin-top: 8px;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--gray-900);
+}
+.planting-card-head p {
+  color: var(--gray-500);
+  margin-top: 6px;
+  font-size: .9rem;
+}
+.planting-select-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  min-width: 220px;
+}
+.planting-select-row label {
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--gray-600);
+}
+#planting-topic {
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius-sm);
+  padding: 6px 9px;
+  background: #fff;
+  color: var(--gray-700);
+  font-size: .9rem;
+}
+.search-topic-btn {
+  border: none;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--blue-500), var(--sky-500));
+  color: #fff;
+  font-weight: 700;
+  padding: 7px 12px;
+  margin-left: 6px;
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .2s ease;
+}
+.search-topic-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(3,105,161,.2);
+}
+.planting-table-wrap { overflow-x: auto; margin-top: 10px; }
+.topic-window {
+  margin-top: 12px;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-md);
+  background: #ffffff;
+  padding: 12px;
+  display: none;
+  box-shadow: 0 6px 20px rgba(0,0,0,.08);
+}
+.topic-window.open { display: block; }
+.topic-window-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-weight: 700;
+  color: var(--blue-700);
+}
+.topic-window-close {
+  border: none;
+  background: #e2e8f0;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  font-weight: 700;
+}
+.topic-window-content { display: grid; gap: 5px; }
+.selected-topic-term { font-size: .95rem; color: #174478; font-weight: 700; }
+.selected-topic-definition { font-size: .9rem; color: var(--gray-700); line-height: 1.4; }
+.selected-topic-tip { font-size: .85rem; background: #eef6ff; border-left: 3px solid #0ea5e9; padding: 6px 8px; border-radius: 4px; color: #15508c; }
+.selected-topic-card {
+  border-radius: var(--radius-md);
+  border: 1px solid var(--gray-200);
+  background: #f9fcff;
+  padding: 12px 14px;
+  margin-top: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.05);
+}
+.selected-topic-title {
+  color: var(--sky-600);
+  font-size: .86rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.selected-topic-content {
+  display: grid;
+  gap: 6px;
+  font-size: .9rem;
+  color: var(--gray-700);
+}
+.selected-topic-term {
+  font-weight: 700;
+  color: #184e8e;
+}
+.selected-topic-definition {
+  line-height: 1.45;
+}
+.selected-topic-tip {
+  font-size: .85rem;
+  color: #065191;
+  font-weight: 600;
+  background: #eff6ff;
+  border-left: 3px solid #0ea5e9;
+  padding: 6px 8px;
+  border-radius: 4px;
+}
+#planting-definition-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: .9rem;
+}
+#planting-definition-table th,
+#planting-definition-table td {
+  text-align: left;
+  border: 1px solid var(--gray-200);
+  padding: 10px 8px;
+  vertical-align: top;
+}
+#planting-definition-table th {
+  background: var(--blue-50);
+  color: var(--gray-700);
+  font-weight: 700;
+}
+#planting-definition-table tbody tr:nth-child(even) {
+  background: #fbfdff;
+}
+
 .pl-container {
   max-width: 1180px;
   margin: 0 auto;
