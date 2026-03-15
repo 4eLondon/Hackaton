@@ -1,3 +1,8 @@
+/**
+ * PlantLink – Main JavaScript
+ * Handles: Navigation, Marketplace, AI Chat, Weather, News, Contact
+ */
+
 /* =============================================================
    DATA STORES
    ============================================================= */
