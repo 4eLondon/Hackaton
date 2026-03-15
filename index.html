@@ -1,229 +1,289 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PlantLink – Smart Agriculture Platform</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
-</head>
-<body>
-
-  <!-- ===== NAVIGATION ===== -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-container">
-      <a href="index.html" class="nav-logo">
-        <span class="logo-icon"></span>
-        <span>PlantLink</span>
-      </a>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="index.html" class="nav-item active">Home</a></li>
-        <li><a href="marketplace.html" class="nav-item">Marketplace</a></li>
-        <li><a href="ai-assistant.html" class="nav-item">AI Assistant</a></li>
-        <li><a href="weather.html" class="nav-item">Weather</a></li>
-        <li><a href="news.html" class="nav-item">Farming News</a></li>
-        <li><a href="contact.html" class="nav-item">Contact</a></li>
-        <li><a href="register.html" class="nav-item">Register</a></li>
-        <li><a href="Login.html" class="nav-item">Login</a></li>
-      </ul>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
-
-  <!-- ===== HERO SECTION ===== -->
-  <section class="hero" id="home">
-    <div class="hero-bg-shapes">
-      <div class="shape shape-1"></div>
-      <div class="shape shape-2"></div>
-      <div class="shape shape-3"></div>
-    </div>
-    <div class="hero-content">
-      <div class="hero-badge">
-        <span class="badge-dot"></span>
-        Digital Agriculture Platform
-      </div>
-      <h1 class="hero-title">
-        Connecting Farmers,<br/>
-        <span class="gradient-text">Buyers &amp; Smart</span><br/>
-        Agriculture
-      </h1>
-      <p class="hero-subtitle">
-        PlantLink is your end-to-end agricultural ecosystem — buy fresh produce directly from farmers, get AI-powered crop advice, track real-time weather alerts, and stay ahead with the latest farming news.
-      </p>
-      <div class="hero-cta">
-        <a href="marketplace.html" class="btn btn-primary">
-          <span>Explore Marketplace</span>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PlantLink – Smart Agriculture Platform</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo">
+          <span class="logo-icon"></span>
+          <span>PlantLink</span>
         </a>
-        <a href="ai-assistant.html" class="btn btn-outline">
-          <span>Ask the AI Assistant</span>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-        </a>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html" class="nav-item active">Home</a></li>
+          <li><a href="marketplace.html" class="nav-item">Marketplace</a></li>
+          <li><a href="ai-assistant.html" class="nav-item">AI Assistant</a></li>
+          <li><a href="weather.html" class="nav-item">Weather</a></li>
+          <li><a href="news.html" class="nav-item">Farming News</a></li>
+          <li><a href="contact.html" class="nav-item">Contact</a></li>
+          <li><a href="register.html" class="nav-item">Register</a></li>
+          <li><a href="Login.html" class="nav-item">Login</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
-      <div class="hero-stats">
-        <div class="stat-item">
-          <span class="stat-number">2,400+</span>
-          <span class="stat-label">Active Farmers</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <span class="stat-number">18K+</span>
-          <span class="stat-label">Buyers</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <span class="stat-number">95%</span>
-          <span class="stat-label">Satisfaction Rate</span>
-        </div>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <div class="hero-image-card">
-        <img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600&q=80" alt="Farmer in field" class="hero-img" />
-        <div class="hero-floating-card card-weather">
-          <span class="fc-icon">🌤️</span>
-          <div>
-            <div class="fc-label">Today's Weather</div>
-            <div class="fc-value">28°C – Partly Cloudy</div>
-          </div>
-        </div>
-        <div class="hero-floating-card card-order">
-          <span class="fc-icon">📦</span>
-          <div>
-            <div class="fc-label">New Order</div>
-            <div class="fc-value">Sweet Peppers · 10kg</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </nav>
 
-  <!-- ===== FEATURES SECTION ===== -->
-  <section class="features" id="features">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Platform Features</span>
-        <h2 class="section-title">Everything Agriculture, One Platform</h2>
-        <p class="section-desc">From field to table — PlantLink empowers every participant in the agricultural chain.</p>
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero" id="home">
+      <div class="hero-bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
       </div>
-      <div class="features-grid">
-        <div class="feature-card reveal">
-          <div class="feature-icon feature-icon--blue">🤖</div>
-          <h3>AI Farming Assistant</h3>
-          <p>Get instant, intelligent crop advice — disease detection, planting schedules, soil tips, and more — powered by smart AI.</p>
-          <a href="ai-assistant.html" class="feature-link">Try it now →</a>
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          Digital Agriculture Platform
         </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon feature-icon--green">🛒</div>
-          <h3>Digital Marketplace</h3>
-          <p>Buy and sell fresh produce directly. Eliminate middlemen and connect farmers with buyers across the region.</p>
-          <a href="marketplace.html" class="feature-link">Browse products →</a>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon feature-icon--yellow">⛈️</div>
-          <h3>Weather Alerts</h3>
-          <p>Real-time agricultural weather monitoring with customized farmer advisories for your region and crop type.</p>
-          <a href="weather.html" class="feature-link">Check alerts →</a>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon feature-icon--teal">📰</div>
-          <h3>Farming News</h3>
-          <p>Stay up to date with the latest developments in Caribbean and global agriculture, policy updates, and innovations.</p>
-          <a href="news.html" class="feature-link">Read news →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== BENEFITS SECTION ===== -->
-  <section class="benefits-section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Why PlantLink</span>
-        <h2 class="section-title">Built for Every Farmer</h2>
-      </div>
-      <div class="benefits-grid">
-        <div class="benefit-item reveal">
-          <div class="benefit-num">01</div>
-          <h4>Sell Your Produce Online</h4>
-          <p>List your crops and reach thousands of buyers directly on the PlantLink marketplace — no middlemen, better margins.</p>
-        </div>
-        <div class="benefit-item reveal">
-          <div class="benefit-num">02</div>
-          <h4>Real-Time Weather Alerts</h4>
-          <p>Get advance warnings of storms, droughts, and heat stress so you can protect your crops before disaster strikes.</p>
-        </div>
-        <div class="benefit-item reveal">
-          <div class="benefit-num">03</div>
-          <h4>Instant AI Farm Advice</h4>
-          <p>Chat with our AI assistant 24/7 for disease diagnosis, planting tips, and soil management recommendations.</p>
-        </div>
-        <div class="benefit-item reveal">
-          <div class="benefit-num">04</div>
-          <h4>Stay Informed</h4>
-          <p>Access curated agricultural news from Jamaica, the Caribbean, and the world to stay ahead of industry changes.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="index.html" class="nav-logo">
-            <span class="logo-icon">🌿</span>
-            <span>PlantLink</span>
+        <h1 class="hero-title">
+          Connecting Farmers,<br />
+          <span class="gradient-text">Buyers &amp; Smart</span><br />
+          Agriculture
+        </h1>
+        <p class="hero-subtitle">
+          PlantLink is your end-to-end agricultural ecosystem — buy fresh
+          produce directly from farmers, get AI-powered crop advice, track
+          real-time weather alerts, and stay ahead with the latest farming news.
+        </p>
+        <div class="hero-cta">
+          <a href="marketplace.html" class="btn btn-primary">
+            <span>Explore Marketplace</span>
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
           </a>
-          <p>Connecting farmers, buyers, and smart agriculture across Jamaica and the Caribbean.</p>
+          <a href="ai-assistant.html" class="btn btn-outline">
+            <span>Ask the AI Assistant</span>
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 8v4l3 3" />
+            </svg>
+          </a>
         </div>
-        <div class="footer-links">
-          <h5>Platform</h5>
-          <ul>
-            <li><a href="marketplace.html">Marketplace</a></li>
-            <li><a href="ai-assistant.html">AI Assistant</a></li>
-            <li><a href="weather.html">Weather Alerts</a></li>
-            <li><a href="news.html">Farming News</a></li>
-          </ul>
-        </div>
-        <div class="footer-links">
-          <h5>Company</h5>
-          <ul>
-            <li><a href="contact.html">About Us</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Service</a></li>
-          </ul>
-        </div>
-        <div class="footer-links">
-          <h5>Support</h5>
-          <ul>
-            <li><a href="#">Farmer Guide</a></li>
-            <li><a href="#">Buyer Help</a></li>
-            <li><a href="#">API Docs</a></li>
-            <li><a href="#">Blog</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© 2025 PlantLink Ltd. All rights reserved. Built for Caribbean Agriculture.</p>
-        <div class="footer-socials">
-          <a href="#">𝕏</a>
-          <a href="#">📸</a>
-          <a href="#">f</a>
-          <a href="#">in</a>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">2,400+</span>
+            <span class="stat-label">Active Farmers</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">18K+</span>
+            <span class="stat-label">Buyers</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">95%</span>
+            <span class="stat-label">Satisfaction Rate</span>
+          </div>
         </div>
       </div>
-    </div>
-  </footer>
+      <div class="hero-visual">
+        <div class="hero-image-card">
+          <img
+            src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600&q=80"
+            alt="Farmer in field"
+            class="hero-img"
+          />
+          <div class="hero-floating-card card-weather">
+            <span class="fc-icon">🌤️</span>
+            <div>
+              <div class="fc-label">Today's Weather</div>
+              <div class="fc-value">28°C – Partly Cloudy</div>
+            </div>
+          </div>
+          <div class="hero-floating-card card-order">
+            <span class="fc-icon">📦</span>
+            <div>
+              <div class="fc-label">New Order</div>
+              <div class="fc-value">Sweet Peppers · 10kg</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <script src="script.js"></script>
-</body>
+    <!-- ===== FEATURES SECTION ===== -->
+    <section class="features" id="features">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Platform Features</span>
+          <h2 class="section-title">Everything Agriculture, One Platform</h2>
+          <p class="section-desc">
+            From field to table — PlantLink empowers every participant in the
+            agricultural chain.
+          </p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card reveal">
+            <div class="feature-icon feature-icon--blue">🤖</div>
+            <h3>AI Farming Assistant</h3>
+            <p>
+              Get instant, intelligent crop advice — disease detection, planting
+              schedules, soil tips, and more — powered by smart AI.
+            </p>
+            <a href="ai-assistant.html" class="feature-link">Try it now →</a>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon feature-icon--green">🛒</div>
+            <h3>Digital Marketplace</h3>
+            <p>
+              Buy and sell fresh produce directly. Eliminate middlemen and
+              connect farmers with buyers across the region.
+            </p>
+            <a href="marketplace.html" class="feature-link"
+              >Browse products →</a
+            >
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon feature-icon--yellow">⛈️</div>
+            <h3>Weather Alerts</h3>
+            <p>
+              Real-time agricultural weather monitoring with customized farmer
+              advisories for your region and crop type.
+            </p>
+            <a href="weather.html" class="feature-link">Check alerts →</a>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon feature-icon--teal">📰</div>
+            <h3>Farming News</h3>
+            <p>
+              Stay up to date with the latest developments in Caribbean and
+              global agriculture, policy updates, and innovations.
+            </p>
+            <a href="news.html" class="feature-link">Read news →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BENEFITS SECTION ===== -->
+    <section class="benefits-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Why PlantLink</span>
+          <h2 class="section-title">Built for Every Farmer</h2>
+        </div>
+        <div class="benefits-grid">
+          <div class="benefit-item reveal">
+            <div class="benefit-num">01</div>
+            <h4>Sell Your Produce Online</h4>
+            <p>
+              List your crops and reach thousands of buyers directly on the
+              PlantLink marketplace — no middlemen, better margins.
+            </p>
+          </div>
+          <div class="benefit-item reveal">
+            <div class="benefit-num">02</div>
+            <h4>Real-Time Weather Alerts</h4>
+            <p>
+              Get advance warnings of storms, droughts, and heat stress so you
+              can protect your crops before disaster strikes.
+            </p>
+          </div>
+          <div class="benefit-item reveal">
+            <div class="benefit-num">03</div>
+            <h4>Instant AI Farm Advice</h4>
+            <p>
+              Chat with our AI assistant 24/7 for disease diagnosis, planting
+              tips, and soil management recommendations.
+            </p>
+          </div>
+          <div class="benefit-item reveal">
+            <div class="benefit-num">04</div>
+            <h4>Stay Informed</h4>
+            <p>
+              Access curated agricultural news from Jamaica, the Caribbean, and
+              the world to stay ahead of industry changes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html" class="nav-logo">
+              <span class="logo-icon">🌿</span>
+              <span>PlantLink</span>
+            </a>
+            <p>
+              Connecting farmers, buyers, and smart agriculture across Jamaica
+              and the Caribbean.
+            </p>
+          </div>
+          <div class="footer-links">
+            <h5>Platform</h5>
+            <ul>
+              <li><a href="marketplace.html">Marketplace</a></li>
+              <li><a href="ai-assistant.html">AI Assistant</a></li>
+              <li><a href="weather.html">Weather Alerts</a></li>
+              <li><a href="news.html">Farming News</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h5>Company</h5>
+            <ul>
+              <li><a href="contact.html">About Us</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h5>Support</h5>
+            <ul>
+              <li><a href="#">Farmer Guide</a></li>
+              <li><a href="#">Buyer Help</a></li>
+              <li><a href="#">API Docs</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            © 2025 PlantLink Ltd. All rights reserved. Built for Caribbean
+            Agriculture.
+          </p>
+          <div class="footer-socials">
+            <a href="#">𝕏</a>
+            <a href="#">📸</a>
+            <a href="#">f</a>
+            <a href="#">in</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="Backend/script.js"></script>
+  </body>
 </html>

@@ -46,13 +46,8 @@
             <input id="password" name="password" type="password" placeholder="••••••••" required minlength="8" />
           </div>
           <div class="login-quick">
-<<<<<<< HEAD
             <label class="checkbox-wrap"><input type="checkbox" id="remember" name="remember" /> Remember me</label>
-            <a href="#" class="link-small">Forgot password?</a>
-=======
-            <label class="checkbox-wrap"><input type="checkbox" name="remember" /> Remember me</label>
-            <a href="#" class="link-small" id="open-forgot">Forgot password?</a>
->>>>>>> 131014adaef1b750658230a0858a19fb51e76ace
+            <a href="#" class="link-small" id="forgot-link">Forgot password?</a>
           </div>
           <button type="submit" class="btn btn-primary btn-full">Log In</button>
           <p class="form-note">New to PlantLink? <a href="contact.html">Request access</a> or <a href="#" id="open-register">Create account</a></p>
@@ -152,14 +147,22 @@
           <h3 id="forgot-title">Recover your PlantLink account</h3>
         </div>
       </div>
-      <p style="color:#475569; margin-bottom:16px;">Enter your email below and we will send a secure reset link to your inbox.</p>
+      <p style="color:#475569; margin-bottom:16px;">To recover your account, enter your email and a new password.</p>
       <form id="forgot-form" class="login-form" novalidate>
         <div class="form-group">
           <label for="forgot-email">Email</label>
           <input id="forgot-email" name="forgotEmail" type="email" placeholder="you@farmlink.com" required />
           <span class="field-error" id="forgot-error" style="display:none;"></span>
         </div>
-        <button type="submit" class="btn btn-primary btn-full">Send reset instructions</button>
+        <div class="form-group">
+          <label for="forgot-password">New password</label>
+          <input id="forgot-password" name="forgotPassword" type="password" placeholder="At least 8 characters" required minlength="8" />
+        </div>
+        <div class="form-group">
+          <label for="forgot-confirm">Confirm new password</label>
+          <input id="forgot-confirm" name="forgotConfirm" type="password" placeholder="Re-enter new password" required minlength="8" />
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Recover & reset password</button>
       </form>
       <div id="forgot-message" class="form-success" style="display:none;"></div>
     </div>
@@ -174,170 +177,6 @@
     </div>
   </footer>
 
-<<<<<<< HEAD
   <script type="module" src="Backend/dataconnet.js"></script>
-=======
-  <script>
-    const form = document.getElementById('login-form');
-    const msg = document.getElementById('login-message');
-    const openRegister = document.getElementById('open-register');
-    const registerModal = document.getElementById('register-modal');
-    const registerClose = document.getElementById('register-close');
-    const registerForm = document.getElementById('register-form');
-    const backToLogin = document.getElementById('back-to-login');
-    const registerMsg = document.getElementById('register-message');
-    const openForgot = document.getElementById('open-forgot');
-    const forgotModal = document.getElementById('forgot-modal');
-    const forgotClose = document.getElementById('forgot-close');
-    const forgotForm = document.getElementById('forgot-form');
-    const forgotMsg = document.getElementById('forgot-message');
-    const forgotError = document.getElementById('forgot-error');
-
-    function showModal(modal) {
-      modal.classList.add('active');
-      modal.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    }
-    function hideModal(modal) {
-      modal.classList.remove('active');
-      modal.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-    }
-
-    openRegister.addEventListener('click', (e) => {
-      e.preventDefault();
-      showModal(registerModal);
-    });
-    registerClose.addEventListener('click', () => hideModal(registerModal));
-    backToLogin.addEventListener('click', (e) => {
-      e.preventDefault();
-      hideModal(registerModal);
-      form.email.focus();
-    });
-    registerModal.addEventListener('click', (e) => {
-      if (e.target === registerModal) hideModal(registerModal);
-    });
-
-    openForgot.addEventListener('click', (e) => {
-      e.preventDefault();
-      showModal(forgotModal);
-    });
-    forgotClose.addEventListener('click', () => hideModal(forgotModal));
-    forgotModal.addEventListener('click', (e) => {
-      if (e.target === forgotModal) hideModal(forgotModal);
-    });
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const email = form.email.value.trim();
-      const pwd = form.password.value.trim();
-      if (!email || !pwd || pwd.length < 8) {
-        msg.style.display = 'block';
-        msg.textContent = 'Please enter a valid email and password (min 8 characters).';
-        msg.style.background = '#fee2e2';
-        msg.style.color = '#b91c1c';
-        return;
-      }
-      msg.style.display = 'block';
-      msg.style.background = '#e6ffef';
-      msg.style.color = '#065f46';
-      msg.textContent = 'Login successful. Redirecting...';
-      setTimeout(() => {
-        window.location.href = 'index.html';
-      }, 650);
-    });
-
-    forgotForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      forgotMsg.style.display = 'none';
-      forgotError.style.display = 'none';
-      forgotError.textContent = '';
-      const email = forgotForm.forgotEmail.value.trim();
-      if (!/\S+@\S+\.\S+/.test(email)) {
-        forgotError.style.display = 'block';
-        forgotError.textContent = 'Please enter a valid email address.';
-        return;
-      }
-      forgotMsg.style.display = 'block';
-      forgotMsg.style.background = '#e6ffef';
-      forgotMsg.style.color = '#065f46';
-      forgotMsg.textContent = 'A password reset link has been sent if this email is registered.';
-      setTimeout(() => {
-        hideModal(forgotModal);
-        forgotForm.reset();
-      }, 1500);
-    });
-
-    registerForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const fullName = registerForm.fullName.value.trim();
-      const email = registerForm.registerEmail.value.trim();
-      const phone = registerForm.phone.value.trim();
-      const farmType = registerForm.farmType.value;
-      const pwd = registerForm.registerPassword.value;
-      const confirm = registerForm.confirmPassword.value;
-
-      const errors = {
-        name: document.getElementById('name-error'),
-        email: document.getElementById('email-error'),
-        phone: document.getElementById('phone-error'),
-        farm: document.getElementById('farm-error'),
-        password: document.getElementById('password-error'),
-        confirm: document.getElementById('confirm-error')
-      };
-
-      Object.values(errors).forEach((el) => { el.style.display = 'none'; el.textContent = ''; });
-      registerMsg.style.display = 'none';
-
-      let valid = true;
-      if (fullName.length < 2) {
-        valid = false;
-        errors.name.textContent = 'Please enter your full name.';
-        errors.name.style.display = 'block';
-      }
-      if (!/^\S+@\S+\.\S+$/.test(email)) {
-        valid = false;
-        errors.email.textContent = 'Enter a valid email address.';
-        errors.email.style.display = 'block';
-      }
-      if (!/^\+?[0-9\-\s]{7,20}$/.test(phone)) {
-        valid = false;
-        errors.phone.textContent = 'Enter a valid phone number.';
-        errors.phone.style.display = 'block';
-      }
-      if (!farmType) {
-        valid = false;
-        errors.farm.textContent = 'Please choose your farm type.';
-        errors.farm.style.display = 'block';
-      }
-      if (pwd.length < 8) {
-        valid = false;
-        errors.password.textContent = 'Password must be at least 8 characters.';
-        errors.password.style.display = 'block';
-      }
-      if (pwd !== confirm) {
-        valid = false;
-        errors.confirm.textContent = 'Passwords do not match.';
-        errors.confirm.style.display = 'block';
-      }
-
-      if (!valid) return;
-
-      registerMsg.style.display = 'block';
-      registerMsg.style.background = '#e6ffef';
-      registerMsg.style.color = '#065f46';
-      registerMsg.textContent = 'Account created successfully. You can now log in.';
-
-      setTimeout(() => {
-        hideModal(registerModal);
-        registerForm.reset();
-        msg.style.display = 'block';
-        msg.style.background = '#e6ffef';
-        msg.style.color = '#065f46';
-        msg.textContent = 'Account ready. Log in now.';
-      }, 850);
-    });
-  </script>
->>>>>>> f0e56464f4262a5aa4f4359cbde8175702b5ca15
 </body>
 </html>

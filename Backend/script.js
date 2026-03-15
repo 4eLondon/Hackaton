@@ -503,14 +503,7 @@ const chatInput    = document.getElementById('chat-input');
 const chatSend     = document.getElementById('chat-send');
 const quickTopics  = document.querySelectorAll('.quick-topics li');
 
-<<<<<<< HEAD:Backend/script.js
-/** Add a message bubble to the chat */
-=======
-const OPENAI_API_KEY = 'REPLACE_WITH_OPENAI_API_KEY'; // Put your key here when deploying
-const OPENAI_MODEL = 'gpt-4o-mini';
 
-
->>>>>>> f0e56464f4262a5aa4f4359cbde8175702b5ca15:script.js
 function appendMessage(text, role) {
   const msg = document.createElement('div');
   msg.className = `chat-msg ${role}`;
@@ -545,7 +538,7 @@ function removeTyping() {
   if (el) el.remove();
 }
 
-/** Generate AI farming response based on keywords */
+
 function getAIResponse(userMsg) {
   const msg = userMsg.toLowerCase();
   if (msg.includes('yellow') || msg.includes('yellowing'))       return AI_RESPONSES.yellow;
@@ -561,68 +554,18 @@ function getAIResponse(userMsg) {
   return AI_RESPONSES.default;
 }
 
-<<<<<<< HEAD:Backend/script.js
-=======
-function getFallbackAIResponse(prompt) {
-  return getAIResponse(prompt);
-}
 
-async function fetchAIResponse(prompt) {
-  if (!OPENAI_API_KEY || OPENAI_API_KEY === 'REPLACE_WITH_OPENAI_API_KEY') {
-    return getFallbackAIResponse(prompt);
-  }
-
-  try {
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${OPENAI_API_KEY}`
-      },
-      body: JSON.stringify({
-        model: OPENAI_MODEL,
-        messages: [
-          { role: 'system', content: 'You are an expert agricultural assistant for Caribbean farmers. Provide practical, concise advice.' },
-          { role: 'user', content: prompt }
-        ],
-        max_tokens: 250,
-        temperature: 0.6
-      })
-    });
-
-    if (!response.ok) {
-      console.error('AI API error', response.status, await response.text());
-      return getFallbackAIResponse(prompt);
-    }
-
-    const data = await response.json();
-    return data?.choices?.[0]?.message?.content?.trim() || getFallbackAIResponse(prompt);
-  } catch (error) {
-    console.error('AI fetch error', error);
-    return getFallbackAIResponse(prompt);
-  }
-}
-
->>>>>>> f0e56464f4262a5aa4f4359cbde8175702b5ca15:script.js
-/** Handle sending a chat message */
 function sendChatMessage(text) {
   text = text.trim();
   if (!text) return;
   appendMessage(text, 'user');
   chatInput.value = '';
   showTyping();
-<<<<<<< HEAD:Backend/script.js
-  // Simulate AI thinking delay
+  
   setTimeout(() => {
     removeTyping();
     appendMessage(getAIResponse(text), 'ai');
   }, 1200 + Math.random() * 600);
-=======
-
-  const responseText = await fetchAIResponse(text);
-  removeTyping();
-  appendMessage(responseText, 'ai');
->>>>>>> f0e56464f4262a5aa4f4359cbde8175702b5ca15:script.js
 }
 
 chatSend.addEventListener('click', () => sendChatMessage(chatInput.value));
@@ -632,7 +575,7 @@ chatInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendChatMess
 quickTopics.forEach(li => {
   li.addEventListener('click', () => {
     sendChatMessage(li.dataset.q);
-    // On mobile, make chat visible
+   
     chatMessages.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
