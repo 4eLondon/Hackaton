@@ -503,6 +503,9 @@ const chatInput    = document.getElementById('chat-input');
 const chatSend     = document.getElementById('chat-send');
 const quickTopics  = document.querySelectorAll('.quick-topics li');
 
+const OPENAI_API_KEY = 'REPLACE_WITH_OPENAI_API_KEY'; // Put your key here when deploying
+const OPENAI_MODEL = 'gpt-4o-mini';
+
 
 function appendMessage(text, role) {
   const msg = document.createElement('div');
@@ -538,14 +541,14 @@ function removeTyping() {
   if (el) el.remove();
 }
 
-
+/** Generate AI farming response based on keywords */
 function getAIResponse(userMsg) {
   const msg = userMsg.toLowerCase();
   if (msg.includes('yellow') || msg.includes('yellowing'))       return AI_RESPONSES.yellow;
   if (msg.includes('tomato'))                                    return AI_RESPONSES.tomato;
   if (msg.includes('pepper'))                                    return AI_RESPONSES.pepper;
   if (msg.includes('fertiliser') || msg.includes('fertilizer')) return AI_RESPONSES.fertiliser;
-  if (msg.includes('irrig') || msg.includes('water'))           return AI_RESPONSES.irrigation;
+  if (msg.includes('irrig') || msg.includes('water'))            return AI_RESPONSES.irrigation;
   if (msg.includes('rain') || msg.includes('flood'))             return AI_RESPONSES.rain;
   if (msg.includes('drought') || msg.includes('dry'))            return AI_RESPONSES.drought;
   if (msg.includes('disease') || msg.includes('blight') || msg.includes('fungus')) return AI_RESPONSES.disease;
@@ -554,14 +557,50 @@ function getAIResponse(userMsg) {
   return AI_RESPONSES.default;
 }
 
+async function fetchAIResponse(prompt) {
+  if (!OPENAI_API_KEY || OPENAI_API_KEY === 'REPLACE_WITH_OPENAI_API_KEY') {
+    return getFallbackAIResponse(prompt);
+  }
 
+  try {
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${OPENAI_API_KEY}`
+      },
+      body: JSON.stringify({
+        model: OPENAI_MODEL,
+        messages: [
+          { role: 'system', content: 'You are an expert agricultural assistant for Caribbean farmers. Provide practical, concise advice.' },
+          { role: 'user', content: prompt }
+        ],
+        max_tokens: 250,
+        temperature: 0.6
+      })
+    });
+
+    if (!response.ok) {
+      console.error('AI API error', response.status, await response.text());
+      return getFallbackAIResponse(prompt);
+    }
+
+    const data = await response.json();
+    return data?.choices?.[0]?.message?.content?.trim() || getFallbackAIResponse(prompt);
+  } catch (error) {
+    console.error('AI fetch error', error);
+    return getFallbackAIResponse(prompt);
+  }
+}
+
+/** Handle sending a chat message */
 function sendChatMessage(text) {
   text = text.trim();
   if (!text) return;
   appendMessage(text, 'user');
   chatInput.value = '';
   showTyping();
-  
+  // Simulate AI thinking delay
   setTimeout(() => {
     removeTyping();
     appendMessage(getAIResponse(text), 'ai');
@@ -575,7 +614,7 @@ chatInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendChatMess
 quickTopics.forEach(li => {
   li.addEventListener('click', () => {
     sendChatMessage(li.dataset.q);
-   
+    // On mobile, make chat visible
     chatMessages.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
