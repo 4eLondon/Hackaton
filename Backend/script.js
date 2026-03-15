@@ -503,10 +503,14 @@ const chatInput    = document.getElementById('chat-input');
 const chatSend     = document.getElementById('chat-send');
 const quickTopics  = document.querySelectorAll('.quick-topics li');
 
+<<<<<<< HEAD:Backend/script.js
+/** Add a message bubble to the chat */
+=======
 const OPENAI_API_KEY = 'REPLACE_WITH_OPENAI_API_KEY'; // Put your key here when deploying
 const OPENAI_MODEL = 'gpt-4o-mini';
 
 
+>>>>>>> f0e56464f4262a5aa4f4359cbde8175702b5ca15:script.js
 function appendMessage(text, role) {
   const msg = document.createElement('div');
   msg.className = `chat-msg ${role}`;
@@ -548,7 +552,7 @@ function getAIResponse(userMsg) {
   if (msg.includes('tomato'))                                    return AI_RESPONSES.tomato;
   if (msg.includes('pepper'))                                    return AI_RESPONSES.pepper;
   if (msg.includes('fertiliser') || msg.includes('fertilizer')) return AI_RESPONSES.fertiliser;
-  if (msg.includes('irrig') || msg.includes('water'))            return AI_RESPONSES.irrigation;
+  if (msg.includes('irrig') || msg.includes('water'))           return AI_RESPONSES.irrigation;
   if (msg.includes('rain') || msg.includes('flood'))             return AI_RESPONSES.rain;
   if (msg.includes('drought') || msg.includes('dry'))            return AI_RESPONSES.drought;
   if (msg.includes('disease') || msg.includes('blight') || msg.includes('fungus')) return AI_RESPONSES.disease;
@@ -557,6 +561,8 @@ function getAIResponse(userMsg) {
   return AI_RESPONSES.default;
 }
 
+<<<<<<< HEAD:Backend/script.js
+=======
 function getFallbackAIResponse(prompt) {
   return getAIResponse(prompt);
 }
@@ -597,17 +603,26 @@ async function fetchAIResponse(prompt) {
   }
 }
 
+>>>>>>> f0e56464f4262a5aa4f4359cbde8175702b5ca15:script.js
 /** Handle sending a chat message */
-async function sendChatMessage(text) {
+function sendChatMessage(text) {
   text = text.trim();
   if (!text) return;
   appendMessage(text, 'user');
   chatInput.value = '';
   showTyping();
+<<<<<<< HEAD:Backend/script.js
+  // Simulate AI thinking delay
+  setTimeout(() => {
+    removeTyping();
+    appendMessage(getAIResponse(text), 'ai');
+  }, 1200 + Math.random() * 600);
+=======
 
   const responseText = await fetchAIResponse(text);
   removeTyping();
   appendMessage(responseText, 'ai');
+>>>>>>> f0e56464f4262a5aa4f4359cbde8175702b5ca15:script.js
 }
 
 chatSend.addEventListener('click', () => sendChatMessage(chatInput.value));
