@@ -89,7 +89,39 @@
       </div>
     </div>
   </section>
+  
 
+  <!-- ===== BENEFITS SECTION ===== -->
+  <section class="benefits-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Why PlantLink</span>
+        <h2 class="section-title">Built for Every Farmer</h2>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit-item reveal">
+          <div class="benefit-num">01</div>
+          <h4>Sell Your Produce Online</h4>
+          <p>List your crops and reach thousands of buyers directly on the PlantLink marketplace — no middlemen, better margins.</p>
+        </div>
+        <div class="benefit-item reveal">
+          <div class="benefit-num">02</div>
+          <h4>Real-Time Weather Alerts</h4>
+          <p>Get advance warnings of storms, droughts, and heat stress so you can protect your crops before disaster strikes.</p>
+        </div>
+        <div class="benefit-item reveal">
+          <div class="benefit-num">03</div>
+          <h4>Instant AI Farm Advice</h4>
+          <p>Chat with our AI assistant 24/7 for disease diagnosis, planting tips, and soil management recommendations.</p>
+        </div>
+        <div class="benefit-item reveal">
+          <div class="benefit-num">04</div>
+          <h4>Stay Informed</h4>
+          <p>Access curated agricultural news from Jamaica, the Caribbean, and the world to stay ahead of industry changes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ===== CONTACT SECTION ===== -->
   <section class="contact-section" id="contact">
@@ -106,7 +138,7 @@
             <span class="contact-icon"></span>
             <div>
               <strong>Email</strong>
-              <p><a href = "mailto:PlantLink35@gmail.com">PlantLink35@gmail.com</a></p>
+              <p>PlantLink35@gmail.com</p>
             </div>
           </div>
 
@@ -133,8 +165,33 @@
 
 
 
-        
- 
+        <form class="contact-form reveal" id="contact-form">
+          <div class="form-group">
+            <label>Your Full Name</label>
+            <input type="text" id="c-name" placeholder="PlantLink" />
+            <span class="field-error" id="err-name"></span>
+          </div>
+
+          <div class="form-group">
+            <label> Your Email Address</label>
+            <input type="email" id="c-email" placeholder="PlantLink@example.com" />
+            <span class="field-error" id="err-email"></span>
+          </div>
+          
+          <div class="form-group">
+            <label>Message</label>
+            <textarea id="c-msg" rows="5" placeholder="How can we help you?"></textarea>
+            <span class="field-error" id="err-msg"></span>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-full">Send your Message</button>
+          <div class="form-success" id="contact-success" style="display:none">
+             ✅Your message has been sent, we will get back in touch with you within 24Hrs. 
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
 
 
 
