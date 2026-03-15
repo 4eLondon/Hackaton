@@ -1,123 +1,152 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Weather Alerts – PlantLink</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
-</head>
-<body>
-
-  <!-- ===== NAVIGATION ===== -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-container">
-      <a href="index.html" class="nav-logo">
-        <span class="logo-icon"></span>
-        <span>PlantLink</span>
-      </a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Alerts – PlantLink</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo">
+          <span class="logo-icon"></span>
+          <span>PlantLink</span>
+        </a>
         <ul class="nav-links" id="nav-links">
-        <li><a href="index.html" class="nav-item active">Home</a></li>
-        <li><a href="marketplace.html" class="nav-item">Marketplace</a></li>
-        <li><a href="ai-assistant.html" class="nav-item">AI Assistant</a></li>
-        <li><a href="weather.html" class="nav-item">Weather</a></li>
-        <li><a href="news.html" class="nav-item">Farming News</a></li>
-        <li><a href="contact.html" class="nav-item">Contact</a></li>
-        <li><a href="register.html" class="nav-item">Register</a></li>
-        <li><a href="Login.html" class="nav-item">Login</a></li>
-      </ul>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
-
-  <!-- ===== WEATHER SECTION ===== -->
-  <section class="weather-section" id="weather">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Weather Alerts</span>
-        <h2 class="section-title">Agricultural Weather Dashboard</h2>
-        <p class="section-desc">Real-time weather conditions and farming advisories for your region.</p>
+          <li><a href="index.html" class="nav-item active">Home</a></li>
+          <li><a href="marketplace.html" class="nav-item">Marketplace</a></li>
+          <li><a href="ai-assistant.html" class="nav-item">AI Assistant</a></li>
+          <li><a href="weather.html" class="nav-item">Weather</a></li>
+          <li><a href="news.html" class="nav-item">Farming News</a></li>
+          <li><a href="contact.html" class="nav-item">Contact</a></li>
+          <li><a href="register.html" class="nav-item">Register</a></li>
+          <li><a href="Login.html" class="nav-item">Login</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
-      <div class="weather-top">
-        <div class="current-weather-card">
-          <div class="cw-location">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Montego Bay, Jamaica
+    </nav>
+
+    <!-- ===== WEATHER SECTION ===== -->
+    <section class="weather-section" id="weather">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Weather Alerts</span>
+          <h2 class="section-title">Agricultural Weather Dashboard</h2>
+          <p class="section-desc">
+            Real-time weather conditions and farming advisories for your region.
+          </p>
+        </div>
+        <div class="weather-top">
+          <div class="current-weather-card">
+            <div class="cw-location">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              Montego Bay, Jamaica
+            </div>
+            <div class="cw-temp" id="cw-temp">28°C</div>
+            <div class="cw-desc" id="cw-desc">Partly Cloudy</div>
+            <div class="cw-details">
+              <div class="cw-detail">
+                <span>💧</span><span id="cw-humidity">72%</span
+                ><span>Humidity</span>
+              </div>
+              <div class="cw-detail">
+                <span>💨</span><span id="cw-wind">15 km/h</span
+                ><span>Wind</span>
+              </div>
+              <div class="cw-detail">
+                <span>☀️</span><span id="cw-uv">UV 7</span><span>UV Index</span>
+              </div>
+            </div>
           </div>
-          <div class="cw-temp" id="cw-temp">28°C</div>
-          <div class="cw-desc" id="cw-desc">Partly Cloudy</div>
-          <div class="cw-details">
-            <div class="cw-detail"><span>💧</span><span id="cw-humidity">72%</span><span>Humidity</span></div>
-            <div class="cw-detail"><span>💨</span><span id="cw-wind">15 km/h</span><span>Wind</span></div>
-            <div class="cw-detail"><span>☀️</span><span id="cw-uv">UV 7</span><span>UV Index</span></div>
+          <div class="forecast-strip" id="forecast-strip">
+            <!-- Injected by JS -->
           </div>
         </div>
-        <div class="forecast-strip" id="forecast-strip">
+        <h3 class="alerts-heading">Active Alerts</h3>
+        <div class="alerts-grid" id="alerts-grid">
           <!-- Injected by JS -->
         </div>
       </div>
-      <h3 class="alerts-heading">Active Alerts</h3>
-      <div class="alerts-grid" id="alerts-grid">
-        <!-- Injected by JS -->
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="index.html" class="nav-logo">
-            <span class="logo-icon">🌿</span>
-            <span>PlantLink</span>
-          </a>
-          <p>Connecting farmers, buyers, and smart agriculture across Jamaica and the Caribbean.</p>
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html" class="nav-logo">
+              <span class="logo-icon">🌿</span>
+              <span>PlantLink</span>
+            </a>
+            <p>
+              Connecting farmers, buyers, and smart agriculture across Jamaica
+              and the Caribbean.
+            </p>
+          </div>
+          <div class="footer-links">
+            <h5>Platform</h5>
+            <ul>
+              <li><a href="marketplace.html">Marketplace</a></li>
+              <li><a href="ai-assistant.html">AI Assistant</a></li>
+              <li><a href="weather.html">Weather Alerts</a></li>
+              <li><a href="news.html">Farming News</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h5>Company</h5>
+            <ul>
+              <li><a href="contact.html">About Us</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h5>Support</h5>
+            <ul>
+              <li><a href="#">Farmer Guide</a></li>
+              <li><a href="#">Buyer Help</a></li>
+              <li><a href="#">API Docs</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </div>
         </div>
-        <div class="footer-links">
-          <h5>Platform</h5>
-          <ul>
-            <li><a href="marketplace.html">Marketplace</a></li>
-            <li><a href="ai-assistant.html">AI Assistant</a></li>
-            <li><a href="weather.html">Weather Alerts</a></li>
-            <li><a href="news.html">Farming News</a></li>
-          </ul>
-        </div>
-        <div class="footer-links">
-          <h5>Company</h5>
-          <ul>
-            <li><a href="contact.html">About Us</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Service</a></li>
-          </ul>
-        </div>
-        <div class="footer-links">
-          <h5>Support</h5>
-          <ul>
-            <li><a href="#">Farmer Guide</a></li>
-            <li><a href="#">Buyer Help</a></li>
-            <li><a href="#">API Docs</a></li>
-            <li><a href="#">Blog</a></li>
-          </ul>
+        <div class="footer-bottom">
+          <p>
+            © 2025 PlantLink Ltd. All rights reserved. Built for Caribbean
+            Agriculture.
+          </p>
+          <div class="footer-socials">
+            <a href="#">𝕏</a>
+            <a href="#">📸</a>
+            <a href="#">f</a>
+            <a href="#">in</a>
+          </div>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>© 2025 PlantLink Ltd. All rights reserved. Built for Caribbean Agriculture.</p>
-        <div class="footer-socials">
-          <a href="#">𝕏</a>
-          <a href="#">📸</a>
-          <a href="#">f</a>
-          <a href="#">in</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+    </footer>
 
-  <script src="script.js"></script>
-</body>
+    <script src="Backend/script.js"></script>
+  </body>
 </html>
+

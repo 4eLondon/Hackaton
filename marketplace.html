@@ -33,20 +33,20 @@
       </button>
     </div>
   </nav>
- 
- 
-  
+
+
+
        <!-- BUYER SEARCH SECTION  (top of marketplace)!-->
-  
+
   <section id="buyer-section">
     <div class="pl-container">
- 
+
       <div class="buyer-header">
         <span class="pl-section-tag"> Buyer Hub</span>
         <h2 class="pl-section-title">Find Sellers &amp; Products</h2>
         <p class="pl-section-desc">Search verified Caribbean farmers by item name, seller, or category fresh listings updated in real time.</p>
       </div>
- 
+
       <!-- Search bar + category dropdown -->
       <div class="buyer-toolbar">
         <div class="buyer-search-wrap">
@@ -70,55 +70,55 @@
           <option value="other">Other</option>
         </select>
       </div>
- 
+
       <!-- Results count label + toggle -->
       <div class="seller-results-row">
         <p class="seller-results-label" id="results-label">Showing all listings</p>
         <button class="seller-toggle-btn" id="toggle-listings-btn" type="button">Hide all listings</button>
       </div>
- 
-      
+
+
       <div class="listings-grid" id="listings-grid">
-        
+
       </div>
- 
+
     </div>
   </section>
- 
+
   <div class="section-band">
     <div class="pl-container"><hr class="pl-divider" /></div>
   </div>
- 
- 
-  
+
+
+
 
   <section id="seller-section">
     <div class="pl-container">
       <div class="seller-layout">
- 
-        
+
+
         <div class="seller-info">
           <span class="pl-section-tag"> Seller Hub</span>
           <h2 class="pl-section-title">List Your Products</h2>
           <p class="pl-section-desc">Reach thousands of buyers across Jamaica and the Caribbean. Fill in your product details and go live instantly.</p>
- 
+
           <div class="seller-perks">
             <div class="perk">
-        
+
               <div class="perk-text">
                 <strong>Instant Visibility</strong>
                 <span>Your listing appears live the moment you submit, no approval delay.</span>
               </div>
             </div>
             <div class="perk">
-              
+
               <div class="perk-text">
                 <strong>Category Sorting</strong>
                 <span>Buyers filter by category, so the right people find you first.</span>
               </div>
             </div>
             <div class="perk">
-              
+
               <div class="perk-text">
                 <strong>Direct Connection</strong>
                 <span>Buyers contact you directly — no middlemen, no commission cuts.</span>
@@ -126,24 +126,24 @@
             </div>
           </div>
         </div>
- 
-        
+
+
         <div class="seller-form-card">
           <h3>Add a New Listing</h3>
           <p class="form-subtitle">All fields are required. Choose a category so buyers can find you.</p>
- 
-          
+
+
           <div class="sf-toast" id="sf-toast">
             <span class="sf-toast-icon">✅</span>
             <span id="sf-toast-msg">Listing added successfully!</span>
           </div>
- 
+
           <form class="seller-form" id="seller-form" novalidate>
             <div class="sf-group">
               <label for="sf-seller-name">Seller / Farm Name</label>
               <input type="text" id="sf-seller-name" class="sf-input" placeholder="e.g. Green Valley Farm" required />
             </div>
- 
+
             <div class="sf-group">
               <label for="sf-item-name">Item Name</label>
               <input type="text" id="sf-item-name" class="sf-input" placeholder="e.g. Sweet Scotch Bonnet Peppers" required />
@@ -161,7 +161,7 @@
               <div class="sf-error" id="err-image-file"></div>
               <div class="sf-image-preview" id="sf-image-preview"></div>
             </div>
- 
+
             <div class="sf-row">
               <div class="sf-group">
                 <label for="sf-category">Category</label>
@@ -179,7 +179,7 @@
                 <input type="number" id="sf-price" class="sf-input" placeholder="e.g. 350" min="1" required />
               </div>
             </div>
- 
+
             <div class="sf-group">
               <label for="sf-description">Short Description</label>
               <textarea id="sf-description" class="sf-textarea" placeholder="e.g. Fresh organic peppers picked this morning. Available in bulk quantities…"></textarea>
@@ -204,16 +204,16 @@
               <label for="sf-twitter">Twitter (optional)</label>
               <input type="url" id="sf-twitter" class="sf-input" placeholder="https://twitter.com/yourhandle" />
             </div>
- 
+
             <button type="submit" class="sf-submit"> List My Product</button>
           </form>
         </div>
- 
+
       </div>
     </div>
   </section>
- 
- 
+
+
   <!-- ORDER MODAL -->
   <div class="modal-overlay" id="order-modal">
     <div class="modal">
@@ -267,8 +267,8 @@
       </div>
     </div>
   </div>
- 
- 
+
+
   <!--  FOOTER -->
   <footer class="footer">
     <div class="container">
@@ -319,6 +319,6 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="Backend/script.js"></script>
 </body>
 </html>
